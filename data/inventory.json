@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-31T23:14:16.690Z",
+  "lastUpdated": "2026-01-31T23:32:42.166Z",
   "items": [
     {
       "id": "test1",
@@ -13,7 +13,24 @@
         "#0000ff",
         "#00ff00"
       ],
-      "image": "testbild.png",
+      "image": "kar001.png",
+      "available": true,
+      "featured": true,
+      "dateAdded": "2026-01-30"
+    },
+    {
+      "id": "test1",
+      "name": "Testar ännu mer",
+      "description": "Bara testar en produkt",
+      "category": "cat test",
+      "price": 1337,
+      "size": "M",
+      "type": "oil on canvas",
+      "colors": [
+        "#0000ff",
+        "#00ff00"
+      ],
+      "image": "kar001.png",
       "available": true,
       "featured": true,
       "dateAdded": "2026-01-30"
