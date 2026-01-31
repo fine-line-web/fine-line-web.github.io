@@ -1,19 +1,22 @@
 {
-  "lastUpdated": "2026-01-31T12:00:00Z",
+  "lastUpdated": "2026-01-31T23:14:16.690Z",
   "items": [
     {
-      "id": "initial-artwork-001",
-      "name": "Placeholder Art",
-      "description": "This is a placeholder artwork used for testing purposes.",
-      "category": "Djur",
-      "price": 4500,
-      "size": "A3 (30 x 42 cm)",
-      "type": "Original",
-      "colors": ["orange", "guld", "brun", "svart"],
-      "image": "test.jpg",
+      "id": "test1",
+      "name": "Testar",
+      "description": "Bara testar en produkt",
+      "category": "cat test",
+      "price": 1337,
+      "size": "M",
+      "type": "oil on canvas",
+      "colors": [
+        "#0000ff",
+        "#00ff00"
+      ],
+      "image": "testbild.png",
       "available": true,
       "featured": true,
-      "dateAdded": "2026-01-15"
+      "dateAdded": "2026-01-30"
     }
   ]
 }
