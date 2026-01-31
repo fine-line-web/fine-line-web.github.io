@@ -1,0 +1,265 @@
+/**
+ * Fine Line galleri - Product Page JavaScript
+ * Handles product detail display and related items
+ */
+
+class ProductPage {
+  constructor() {
+    this.product = null;
+    this.allItems = [];
+
+    this.init();
+  }
+
+  async init() {
+    await this.loadData();
+    this.loadProduct();
+    this.loadRelatedItems();
+  }
+
+  async loadData() {
+    try {
+      const response = await fetch("data/inventory.json");
+      const data = await response.json();
+      this.allItems = data.items || [];
+    } catch (error) {
+      console.error("Error loading inventory:", error);
+      this.allItems = [];
+    }
+  }
+
+  loadProduct() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get("id");
+
+    if (!productId) {
+      this.showError();
+      return;
+    }
+
+    this.product = this.allItems.find((item) => item.id === productId);
+
+    if (!this.product) {
+      this.showError();
+      return;
+    }
+
+    this.renderProduct();
+  }
+
+  showError() {
+    const container = document.getElementById("productContainer");
+    if (container) {
+      container.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem;">
+                    <h2>Produkten hittades inte</h2>
+                    <p>Det verkar som att produkten du letar efter inte finns eller har tagits bort.</p>
+                    <a href="galleri.html" class="btn btn-primary" style="margin-top: 1.5rem;">Tillbaka till galleriet</a>
+                </div>
+            `;
+    }
+  }
+
+  renderProduct() {
+    // Update page title
+    document.title = `${this.product.name} | Fine Line galleri`;
+
+    // Update meta description
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.content =
+        this.product.description ||
+        `${this.product.name} - Unikt konstverk från Fine Line galleri`;
+    }
+
+    // Main image
+    const mainImage = document.getElementById("mainImage");
+    if (mainImage) {
+      mainImage.src = this.product.image || "images/placeholder-artwork.jpg";
+      mainImage.alt = this.product.name;
+    }
+
+    // Thumbnails (if multiple images)
+    const thumbnails = document.getElementById("thumbnails");
+    if (thumbnails && this.product.images?.length > 1) {
+      thumbnails.innerHTML = this.product.images
+        .map(
+          (img, index) => `
+                <div class="product-thumbnail ${index === 0 ? "active" : ""}" data-index="${index}">
+                    <img src="${img}" alt="${this.product.name} - bild ${index + 1}">
+                </div>
+            `,
+        )
+        .join("");
+
+      // Add click handlers
+      thumbnails.querySelectorAll(".product-thumbnail").forEach((thumb) => {
+        thumb.addEventListener("click", () => {
+          const index = parseInt(thumb.dataset.index);
+          mainImage.src = this.product.images[index];
+          thumbnails
+            .querySelectorAll(".product-thumbnail")
+            .forEach((t) => t.classList.remove("active"));
+          thumb.classList.add("active");
+        });
+      });
+    }
+
+    // Product info
+    this.setTextContent("productCategory", this.product.category || "");
+    this.setTextContent("productTitle", this.product.name);
+    this.setTextContent("productPrice", this.formatPrice(this.product.price));
+
+    const description = document.getElementById("productDescription");
+    if (description) {
+      description.innerHTML = `<p>${this.product.description || "Ingen beskrivning tillgänglig."}</p>`;
+    }
+
+    // Details
+    this.setTextContent("productSize", this.product.size || "-");
+    this.setTextContent("productType", this.product.type || "Original");
+    this.setTextContent(
+      "productAvailability",
+      this.product.available !== false ? "I lager" : "Såld",
+    );
+
+    // Colors
+    const colorsContainer = document.getElementById("productColors");
+    if (colorsContainer && this.product.colors?.length > 0) {
+      const colorTags = document.createElement("div");
+      colorTags.className = "color-tags";
+      colorTags.innerHTML = this.product.colors
+        .map(
+          (color) =>
+            `<span class="color-tag" style="background-color: ${this.getColorValue(color)}" title="${color}"></span>`,
+        )
+        .join("");
+      colorsContainer.querySelector(".color-tags")?.replaceWith(colorTags);
+    } else if (colorsContainer) {
+      colorsContainer.style.display = "none";
+    }
+
+    // Update inquiry button
+    const inquiryBtn = document.getElementById("inquiryBtn");
+    if (inquiryBtn) {
+      const subject = encodeURIComponent(`Förfrågan: ${this.product.name}`);
+      const body = encodeURIComponent(
+        `Hej!\n\nJag är intresserad av verket "${this.product.name}".\n\n`,
+      );
+      inquiryBtn.href = `mailto:hej@finelinegalleri.se?subject=${subject}&body=${body}`;
+    }
+  }
+
+  loadRelatedItems() {
+    const container = document.getElementById("relatedWorks");
+    if (!container || !this.product) return;
+
+    // Find items in same category, excluding current product
+    let related = this.allItems
+      .filter(
+        (item) =>
+          item.id !== this.product.id &&
+          item.category === this.product.category,
+      )
+      .slice(0, 3);
+
+    // If not enough in same category, fill with other items
+    if (related.length < 3) {
+      const others = this.allItems
+        .filter(
+          (item) => item.id !== this.product.id && !related.includes(item),
+        )
+        .slice(0, 3 - related.length);
+      related = [...related, ...others];
+    }
+
+    if (related.length === 0) {
+      container.parentElement.style.display = "none";
+      return;
+    }
+
+    container.innerHTML = related
+      .map((item) => this.createItemCard(item))
+      .join("");
+  }
+
+  createItemCard(item) {
+    const colorTags =
+      item.colors
+        ?.map(
+          (color) =>
+            `<span class="color-tag" style="background-color: ${this.getColorValue(color)}" title="${color}"></span>`,
+        )
+        .join("") || "";
+
+    return `
+            <article class="artwork-card">
+                <a href="produkt.html?id=${item.id}">
+                    <div class="artwork-image">
+                        <img src="${item.image || "images/placeholder-artwork.jpg"}" 
+                             alt="${item.name}" 
+                             loading="lazy">
+                        <div class="artwork-overlay">
+                            <span class="btn btn-primary">Visa verk</span>
+                        </div>
+                    </div>
+                    <div class="artwork-info">
+                        <h3 class="artwork-title">${item.name}</h3>
+                        <div class="artwork-meta">
+                            <span class="artwork-category">${item.category || ""}</span>
+                            <span class="artwork-price">${this.formatPrice(item.price)}</span>
+                        </div>
+                        ${colorTags ? `<div class="color-tags">${colorTags}</div>` : ""}
+                    </div>
+                </a>
+            </article>
+        `;
+  }
+
+  setTextContent(elementId, text) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.textContent = text;
+    }
+  }
+
+  formatPrice(price) {
+    if (!price) return "Pris på förfrågan";
+    return new Intl.NumberFormat("sv-SE", {
+      style: "currency",
+      currency: "SEK",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(price);
+  }
+
+  getColorValue(colorName) {
+    const colors = {
+      svart: "#1a1a1a",
+      vit: "#ffffff",
+      röd: "#e07a5f",
+      blå: "#3d5a80",
+      grön: "#81b29a",
+      gul: "#f4d35e",
+      orange: "#f4a261",
+      lila: "#8e6c88",
+      rosa: "#e8b4bc",
+      brun: "#8b4513",
+      guld: "#d4a574",
+      silver: "#c0c0c0",
+      turkos: "#40e0d0",
+      korall: "#e07a5f",
+      mint: "#98ff98",
+      lavendel: "#e6e6fa",
+      beige: "#f5f5dc",
+      grå: "#888888",
+    };
+
+    return colors[colorName?.toLowerCase()] || "#888888";
+  }
+}
+
+// Initialize product page
+document.addEventListener("DOMContentLoaded", () => {
+  new ProductPage();
+});

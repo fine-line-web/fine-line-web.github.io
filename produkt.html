@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Produktdetaljer - Fine Line galleri">
+    <title>Konstverk | Fine Line galleri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Fine Line</span>
+                <span class="logo-sub">galleri</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Öppna meny">
+                <span class="hamburger"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Hem</a></li>
+                <li><a href="galleri.html" class="nav-link">Galleri</a></li>
+                <li><a href="om-oss.html" class="nav-link">Om konstnären</a></li>
+                <li><a href="bestallning.html" class="nav-link">Beställning</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="container">
+            <div class="product-grid" id="productContainer">
+                <!-- Gallery -->
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img src="images/placeholder-artwork.jpg" alt="Konstverk" id="mainImage">
+                    </div>
+                    <div class="product-thumbnails" id="thumbnails">
+                        <!-- Thumbnails populated by JS -->
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="product-info">
+                    <p class="product-category" id="productCategory">Kategori</p>
+                    <h1 class="product-title" id="productTitle">Produktnamn</h1>
+                    <p class="product-price" id="productPrice">0 kr</p>
+                    
+                    <div class="product-description" id="productDescription">
+                        <p>Produktbeskrivning laddas...</p>
+                    </div>
+
+                    <div class="product-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Storlek</span>
+                            <span class="detail-value" id="productSize">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Teknik</span>
+                            <span class="detail-value">En linje + akvarell</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Material</span>
+                            <span class="detail-value">300g akvarellpapper</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Typ</span>
+                            <span class="detail-value" id="productType">Original</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Tillgänglighet</span>
+                            <span class="detail-value" id="productAvailability">I lager</span>
+                        </div>
+                    </div>
+
+                    <div class="product-colors" id="productColors">
+                        <h4>Färger i verket</h4>
+                        <div class="color-tags">
+                            <!-- Color tags populated by JS -->
+                        </div>
+                    </div>
+
+                    <div class="product-actions">
+                        <a href="mailto:hej@finelinegalleri.se?subject=Förfrågan: " class="btn btn-primary" id="inquiryBtn">
+                            Skicka förfrågan
+                        </a>
+                        <a href="galleri.html" class="btn btn-secondary">
+                            ← Tillbaka till galleriet
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Works -->
+    <section class="section featured">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Relaterade verk</span>
+                <h2>Du kanske också gillar</h2>
+            </div>
+            <div class="featured-grid" id="relatedWorks">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">Fine Line</span>
+                        <span class="logo-sub">galleri</span>
+                    </a>
+                    <p>Unik konst med en linje – skapad med passion och precision.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Navigering</h4>
+                    <ul>
+                        <li><a href="index.html">Hem</a></li>
+                        <li><a href="galleri.html">Galleri</a></li>
+                        <li><a href="om-oss.html">Om konstnären</a></li>
+                        <li><a href="bestallning.html">Beställning</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="villkor.html">Köpvillkor</a></li>
+                        <li><a href="frakt.html">Frakt & leverans</a></li>
+                        <li><a href="integritet.html">Integritetspolicy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Kontakt</h4>
+                    <p>
+                        <a href="mailto:hej@finelinegalleri.se">hej@finelinegalleri.se</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Pinterest" class="social-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Fine Line galleri. Alla rättigheter förbehållna.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/product.js"></script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "lastUpdated": "2026-01-31T12:00:00Z",
+  "items": [
+    {
+      "id": "initial-artwork-001",
+      "name": "Placeholder Art",
+      "description": "This is a placeholder artwork used for testing purposes.",
+      "category": "Djur",
+      "price": 4500,
+      "size": "A3 (30 x 42 cm)",
+      "type": "Original",
+      "colors": ["orange", "guld", "brun", "svart"],
+      "image": "test.jpg",
+      "available": true,
+      "featured": true,
+      "dateAdded": "2026-01-15"
+    }
+  ]
+}

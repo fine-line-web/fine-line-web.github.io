@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#81b29a;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#3d5a80;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#e07a5f;stop-opacity:0.6" />
+    </linearGradient>
+  </defs>
+  <!-- Watercolor splash background -->
+  <circle cx="50" cy="50" r="45" fill="url(#accent)"/>
+  <!-- Single line art "F" -->
+  <path 
+    d="M 35 25 
+       L 35 75 
+       M 35 25 
+       L 65 25 
+       M 35 48 
+       L 55 48" 
+    stroke="#1a1a1a" 
+    stroke-width="3" 
+    stroke-linecap="round" 
+    stroke-linejoin="round"
+    fill="none"/>
+</svg>
