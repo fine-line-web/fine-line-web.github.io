@@ -16,7 +16,7 @@ const fs = require("fs");
 const path = require("path");
 
 // Configuration
-const SHEET_RANGE = "Inventory!A2:K"; // Adjust based on your sheet name and columns
+const SHEET_RANGE = "Inventory!A2:L"; // Adjust based on your sheet name and columns
 
 async function main() {
   console.log("🚀 Starting Google Sheets sync...");
