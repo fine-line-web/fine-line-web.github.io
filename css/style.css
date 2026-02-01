@@ -624,6 +624,25 @@ p {
     border: 1px solid var(--color-gray-100);
 }
 
+/* Sold indicator - red dot for unavailable items */
+.artwork-card.sold .artwork-image::after {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    background-color: #c41e3a;
+    border-radius: 50%;
+    border: 2px solid var(--color-white);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.artwork-card.sold .artwork-image img {
+    filter: grayscale(20%);
+}
+
 /* =====================================================
    ABOUT PREVIEW
    ===================================================== */
