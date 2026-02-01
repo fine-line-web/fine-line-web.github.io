@@ -14,7 +14,7 @@ class ProductPage {
   async init() {
     await this.loadData();
     this.loadProduct();
-    this.loadRelatedItems();
+    this.loadSimilarItems();
   }
 
   async loadData() {
@@ -64,6 +64,12 @@ class ProductPage {
     // Update page title
     document.title = `${this.product.name} | Fine Line galleri`;
 
+    // Update breadcrumb
+    const breadcrumb = document.getElementById("breadcrumbCurrent");
+    if (breadcrumb) {
+      breadcrumb.textContent = this.product.name;
+    }
+
     // Update meta description
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
@@ -72,9 +78,14 @@ class ProductPage {
         `${this.product.name} - Unikt konstverk från Fine Line galleri`;
     }
 
-    // Main image
+    // Main image with skeleton handling
     const mainImage = document.getElementById("mainImage");
+    const mainImageSkeleton = document.getElementById("mainImageSkeleton");
     if (mainImage) {
+      mainImage.onload = () => {
+        if (mainImageSkeleton) mainImageSkeleton.style.display = "none";
+        mainImage.style.display = "block";
+      };
       mainImage.src = getImageUrl(this.product.image);
       mainImage.alt = this.product.name;
     }
@@ -105,7 +116,7 @@ class ProductPage {
       });
     }
 
-    // Product info
+    // Product info - replace skeleton content
     this.setTextContent("productCategory", this.product.category || "");
     this.setTextContent("productTitle", this.product.name);
     this.setTextContent("productPrice", formatPrice(this.product.price));
@@ -150,35 +161,60 @@ class ProductPage {
     }
   }
 
-  loadRelatedItems() {
-    const container = document.getElementById("relatedWorks");
+  loadSimilarItems() {
+    const container = document.getElementById("similarWorks");
     if (!container || !this.product) return;
 
-    // Find items in same category, excluding current product
-    let related = this.allItems
-      .filter(
-        (item) =>
-          item.id !== this.product.id &&
-          item.category === this.product.category,
-      )
-      .slice(0, 3);
+    const currentColors = this.product.colors || [];
+    const currentType = this.product.type;
 
-    // If not enough in same category, fill with other items
-    if (related.length < 3) {
+    // Score items by similarity (shared colors and same type)
+    const scoredItems = this.allItems
+      .filter((item) => item.id !== this.product.id)
+      .map((item) => {
+        let score = 0;
+
+        // Score for matching type
+        if (item.type && item.type === currentType) {
+          score += 3;
+        }
+
+        // Score for each shared color
+        const itemColors = item.colors || [];
+        const sharedColors = currentColors.filter((c) =>
+          itemColors.includes(c),
+        );
+        score += sharedColors.length * 2;
+
+        // Small bonus for same category
+        if (item.category === this.product.category) {
+          score += 1;
+        }
+
+        return { item, score };
+      })
+      .filter((scored) => scored.score > 0) // Only items with some similarity
+      .sort((a, b) => b.score - a.score)
+      .slice(0, 4)
+      .map((scored) => scored.item);
+
+    // If not enough similar items, fill with random others
+    let similar = scoredItems;
+    if (similar.length < 4) {
       const others = this.allItems
         .filter(
-          (item) => item.id !== this.product.id && !related.includes(item),
+          (item) => item.id !== this.product.id && !similar.includes(item),
         )
-        .slice(0, 3 - related.length);
-      related = [...related, ...others];
+        .slice(0, 4 - similar.length);
+      similar = [...similar, ...others];
     }
 
-    if (related.length === 0) {
+    if (similar.length === 0) {
       container.parentElement.style.display = "none";
       return;
     }
 
-    container.innerHTML = related
+    container.innerHTML = similar
       .map((item) => this.createItemCard(item))
       .join("");
   }

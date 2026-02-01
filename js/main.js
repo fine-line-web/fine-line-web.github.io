@@ -222,7 +222,7 @@ function formatPrice(price) {
 }
 
 function getImageUrl(image) {
-  if (!image) return "images/placeholder-artwork.jpg";
+  if (!image) return "";
   // If it's already a full path, return as-is
   if (image.includes("/") || image.includes("\\")) return image;
   // Otherwise, construct the path
