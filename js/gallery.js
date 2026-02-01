@@ -23,9 +23,36 @@ class GalleryManager {
 
   async init() {
     await this.loadItems();
+    this.buildCategoryFilters();
     this.setupEventListeners();
     this.checkUrlParams();
     this.render();
+  }
+
+  buildCategoryFilters() {
+    if (!this.categoryFilters) return;
+
+    // Get unique categories from inventory
+    const categories = [
+      ...new Set(this.items.map((item) => item.category).filter(Boolean)),
+    ];
+
+    // Sort alphabetically (Swedish)
+    categories.sort((a, b) => a.localeCompare(b, "sv"));
+
+    // Build filter buttons HTML
+    let html =
+      '<button class="filter-btn active" data-category="alla">Alla</button>';
+    categories.forEach((category) => {
+      const categorySlug = category
+        .toLowerCase()
+        .replace(/[åä]/g, "a")
+        .replace(/ö/g, "o")
+        .replace(/[^a-z0-9]+/g, "-");
+      html += `<button class="filter-btn" data-category="${categorySlug}" data-category-name="${category}">${category}</button>`;
+    });
+
+    this.categoryFilters.innerHTML = html;
   }
 
   async loadItems() {
@@ -109,12 +136,17 @@ class GalleryManager {
     if (this.currentCategory === "alla") {
       this.filteredItems = [...this.items];
     } else {
+      // Find the actual category name from the button
+      const activeBtn = this.categoryFilters?.querySelector(
+        `[data-category="${this.currentCategory}"]`,
+      );
+      const categoryName =
+        activeBtn?.dataset.categoryName || this.currentCategory;
+
       this.filteredItems = this.items.filter(
         (item) =>
-          item.category?.toLowerCase() === this.currentCategory.toLowerCase() ||
-          item.category
-            ?.toLowerCase()
-            .includes(this.currentCategory.toLowerCase()),
+          item.category?.toLowerCase() === categoryName.toLowerCase() ||
+          item.category?.toLowerCase() === this.currentCategory.toLowerCase(),
       );
     }
 
@@ -181,7 +213,7 @@ class GalleryManager {
       item.colors
         ?.map(
           (color) =>
-            `<span class="color-tag" style="background-color: ${this.getColorValue(color)}" title="${color}"></span>`,
+            `<span class="color-tag" style="background-color: ${getColorValue(color)}" title="${color}"></span>`,
         )
         .join("") || "";
 
@@ -191,7 +223,7 @@ class GalleryManager {
             <article class="artwork-card ${availabilityClass}">
                 <a href="produkt.html?id=${item.id}">
                     <div class="artwork-image">
-                        <img src="${item.image || "images/placeholder-artwork.jpg"}" 
+                        <img src="${getImageUrl(item.image)}" 
                              alt="${item.name}" 
                              loading="lazy">
                         <div class="artwork-overlay">
@@ -202,7 +234,7 @@ class GalleryManager {
                         <h3 class="artwork-title">${item.name}</h3>
                         <div class="artwork-meta">
                             <span class="artwork-category">${item.category || ""}</span>
-                            <span class="artwork-price">${this.formatPrice(item.price)}</span>
+                            <span class="artwork-price">${formatPrice(item.price)}</span>
                         </div>
                         ${colorTags ? `<div class="color-tags">${colorTags}</div>` : ""}
                     </div>
@@ -258,41 +290,6 @@ class GalleryManager {
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     });
-  }
-
-  formatPrice(price) {
-    if (!price) return "Pris på förfrågan";
-    return new Intl.NumberFormat("sv-SE", {
-      style: "currency",
-      currency: "SEK",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price);
-  }
-
-  getColorValue(colorName) {
-    const colors = {
-      svart: "#1a1a1a",
-      vit: "#ffffff",
-      röd: "#e07a5f",
-      blå: "#3d5a80",
-      grön: "#81b29a",
-      gul: "#f4d35e",
-      orange: "#f4a261",
-      lila: "#8e6c88",
-      rosa: "#e8b4bc",
-      brun: "#8b4513",
-      guld: "#d4a574",
-      silver: "#c0c0c0",
-      turkos: "#40e0d0",
-      korall: "#e07a5f",
-      mint: "#98ff98",
-      lavendel: "#e6e6fa",
-      beige: "#f5f5dc",
-      grå: "#888888",
-    };
-
-    return colors[colorName?.toLowerCase()] || "#888888";
   }
 }
 

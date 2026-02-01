@@ -171,7 +171,7 @@ function createArtworkCard(item) {
         <article class="artwork-card">
             <a href="produkt.html?id=${item.id}">
                 <div class="artwork-image">
-                    <img src="${item.image || "images/placeholder-artwork.jpg"}" 
+                    <img src="${getImageUrl(item.image)}" 
                          alt="${item.name}" 
                          loading="lazy">
                     <div class="artwork-overlay">
@@ -221,7 +221,20 @@ function formatPrice(price) {
   }).format(price);
 }
 
+function getImageUrl(image) {
+  if (!image) return "images/placeholder-artwork.jpg";
+  // If it's already a full path, return as-is
+  if (image.includes("/") || image.includes("\\")) return image;
+  // Otherwise, construct the path
+  return `images/artworks/${image}.jpg`;
+}
+
 function getColorValue(colorName) {
+  // If it's already a hex color, return it directly
+  if (colorName?.startsWith("#")) {
+    return colorName;
+  }
+
   const colors = {
     // Swedish color names
     svart: "#1a1a1a",
@@ -255,7 +268,7 @@ function getColorValue(colorName) {
     gold: "#d4a574",
   };
 
-  return colors[colorName.toLowerCase()] || "#888888";
+  return colors[colorName?.toLowerCase()] || colorName || "#888888";
 }
 
 function getUrlParam(param) {

@@ -2,10 +2,10 @@
  * Google Sheets Sync Script
  * Fetches inventory data from Google Sheets and saves it as JSON
  *
- * Required secrets in GitHub:
- * - GOOGLE_SERVICE_ACCOUNT_EMAIL: The email of your Google Cloud service account
- * - GOOGLE_PRIVATE_KEY: The private key for the service account
- * - GOOGLE_SHEET_ID: The ID of your Google Sheet (from the URL)
+ * Required GitHub Actions secrets:
+ * - GOOGLE_SERVICE_ACCOUNT_EMAIL: Service account email
+ * - GOOGLE_PRIVATE_KEY: Service account private key
+ * - GOOGLE_SHEET_ID: Google Sheet ID (from the URL)
  *
  * Google Sheet structure:
  * | id | name | description | category | price | size | type | colors | image | available | featured |
@@ -21,7 +21,6 @@ const SHEET_RANGE = "Inventory!A2:L"; // Adjust based on your sheet name and col
 async function main() {
   console.log("🚀 Starting Google Sheets sync...");
 
-  // Check for required environment variables
   const { GOOGLE_SERVICE_ACCOUNT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEET_ID } =
     process.env;
 
@@ -34,7 +33,7 @@ async function main() {
       "⚠️  Missing Google Sheets credentials. Using existing inventory.json",
     );
     console.log(
-      "   To enable sync, add the following secrets to your GitHub repository:",
+      "\n   To enable sync, add these secrets to your GitHub repository:",
     );
     console.log("   - GOOGLE_SERVICE_ACCOUNT_EMAIL");
     console.log("   - GOOGLE_PRIVATE_KEY");

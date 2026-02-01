@@ -75,7 +75,7 @@ class ProductPage {
     // Main image
     const mainImage = document.getElementById("mainImage");
     if (mainImage) {
-      mainImage.src = this.product.image || "images/placeholder-artwork.jpg";
+      mainImage.src = getImageUrl(this.product.image);
       mainImage.alt = this.product.name;
     }
 
@@ -86,7 +86,7 @@ class ProductPage {
         .map(
           (img, index) => `
                 <div class="product-thumbnail ${index === 0 ? "active" : ""}" data-index="${index}">
-                    <img src="${img}" alt="${this.product.name} - bild ${index + 1}">
+                    <img src="${getImageUrl(img)}" alt="${this.product.name} - bild ${index + 1}">
                 </div>
             `,
         )
@@ -96,7 +96,7 @@ class ProductPage {
       thumbnails.querySelectorAll(".product-thumbnail").forEach((thumb) => {
         thumb.addEventListener("click", () => {
           const index = parseInt(thumb.dataset.index);
-          mainImage.src = this.product.images[index];
+          mainImage.src = getImageUrl(this.product.images[index]);
           thumbnails
             .querySelectorAll(".product-thumbnail")
             .forEach((t) => t.classList.remove("active"));
@@ -108,7 +108,7 @@ class ProductPage {
     // Product info
     this.setTextContent("productCategory", this.product.category || "");
     this.setTextContent("productTitle", this.product.name);
-    this.setTextContent("productPrice", this.formatPrice(this.product.price));
+    this.setTextContent("productPrice", formatPrice(this.product.price));
 
     const description = document.getElementById("productDescription");
     if (description) {
@@ -131,7 +131,7 @@ class ProductPage {
       colorTags.innerHTML = this.product.colors
         .map(
           (color) =>
-            `<span class="color-tag" style="background-color: ${this.getColorValue(color)}" title="${color}"></span>`,
+            `<span class="color-tag" style="background-color: ${getColorValue(color)}" title="${color}"></span>`,
         )
         .join("");
       colorsContainer.querySelector(".color-tags")?.replaceWith(colorTags);
@@ -188,7 +188,7 @@ class ProductPage {
       item.colors
         ?.map(
           (color) =>
-            `<span class="color-tag" style="background-color: ${this.getColorValue(color)}" title="${color}"></span>`,
+            `<span class="color-tag" style="background-color: ${getColorValue(color)}" title="${color}"></span>`,
         )
         .join("") || "";
 
@@ -196,7 +196,7 @@ class ProductPage {
             <article class="artwork-card">
                 <a href="produkt.html?id=${item.id}">
                     <div class="artwork-image">
-                        <img src="${item.image || "images/placeholder-artwork.jpg"}" 
+                        <img src="${getImageUrl(item.image)}" 
                              alt="${item.name}" 
                              loading="lazy">
                         <div class="artwork-overlay">
@@ -207,7 +207,7 @@ class ProductPage {
                         <h3 class="artwork-title">${item.name}</h3>
                         <div class="artwork-meta">
                             <span class="artwork-category">${item.category || ""}</span>
-                            <span class="artwork-price">${this.formatPrice(item.price)}</span>
+                            <span class="artwork-price">${formatPrice(item.price)}</span>
                         </div>
                         ${colorTags ? `<div class="color-tags">${colorTags}</div>` : ""}
                     </div>
@@ -221,41 +221,6 @@ class ProductPage {
     if (element) {
       element.textContent = text;
     }
-  }
-
-  formatPrice(price) {
-    if (!price) return "Pris på förfrågan";
-    return new Intl.NumberFormat("sv-SE", {
-      style: "currency",
-      currency: "SEK",
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(price);
-  }
-
-  getColorValue(colorName) {
-    const colors = {
-      svart: "#1a1a1a",
-      vit: "#ffffff",
-      röd: "#e07a5f",
-      blå: "#3d5a80",
-      grön: "#81b29a",
-      gul: "#f4d35e",
-      orange: "#f4a261",
-      lila: "#8e6c88",
-      rosa: "#e8b4bc",
-      brun: "#8b4513",
-      guld: "#d4a574",
-      silver: "#c0c0c0",
-      turkos: "#40e0d0",
-      korall: "#e07a5f",
-      mint: "#98ff98",
-      lavendel: "#e6e6fa",
-      beige: "#f5f5dc",
-      grå: "#888888",
-    };
-
-    return colors[colorName?.toLowerCase()] || "#888888";
   }
 }
 
