@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-01-31T23:32:42.166Z",
+  "lastUpdated": "2026-02-01T00:02:16.617Z",
   "items": [
     {
       "id": "test1",
@@ -13,7 +13,7 @@
         "#0000ff",
         "#00ff00"
       ],
-      "image": "kar001.png",
+      "image": "kar001",
       "available": true,
       "featured": true,
       "dateAdded": "2026-01-30"
@@ -30,7 +30,7 @@
         "#0000ff",
         "#00ff00"
       ],
-      "image": "kar001.png",
+      "image": "kar002",
       "available": true,
       "featured": true,
       "dateAdded": "2026-01-30"
