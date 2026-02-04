@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-04T19:56:05.998Z",
+  "lastUpdated": "2026-02-04T20:19:52.619Z",
   "items": [
     {
       "id": "test1",
@@ -16,7 +16,7 @@
       "dateAdded": "2026-01-30"
     },
     {
-      "id": "test2",
+      "id": "test1",
       "name": "Testar ännu mer",
       "description": "Bara testar en produkt",
       "category": "katt",
