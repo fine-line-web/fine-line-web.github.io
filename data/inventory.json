@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-04T18:40:45.057Z",
+  "lastUpdated": "2026-02-04T19:35:35.689Z",
   "items": [
     {
       "id": "test1",
@@ -14,7 +14,7 @@
         "grön",
         "blå"
       ],
-      "image": "kar001",
+      "image": "kar001, kar002",
       "available": false,
       "featured": true,
       "dateAdded": "2026-01-30"
