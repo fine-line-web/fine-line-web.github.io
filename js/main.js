@@ -144,9 +144,12 @@ async function loadFeaturedWorks() {
     const data = await response.json();
 
     // Get first 3 featured items or first 3 items
-    const featured = data.items
-      .filter((item) => item.featured || item.available)
-      .slice(0, 3);
+    const featured = data.items.filter((item) => item.featured).slice(0, 3);
+
+    if (featured.length > 0) {
+      container.parentElement.innerHTML = "";
+      return;
+    }
 
     container.innerHTML = featured
       .map((item) => createArtworkCard(item))
