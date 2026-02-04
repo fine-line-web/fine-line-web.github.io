@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-04T19:54:09.840Z",
+  "lastUpdated": "2026-02-04T19:56:05.998Z",
   "items": [
     {
       "id": "test1",
@@ -11,7 +11,7 @@
       "type": "one-line akvarell",
       "colors": [],
       "image": "kar001",
-      "available": false,
+      "available": true,
       "featured": true,
       "dateAdded": "2026-01-30"
     },
