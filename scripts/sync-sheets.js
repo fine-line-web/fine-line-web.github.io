@@ -8,7 +8,11 @@
  * - GOOGLE_SHEET_ID: Google Sheet ID (from the URL)
  *
  * Google Sheet structure:
- * | id | name | description | category | price | size | type | colors | image | available | featured |
+ * | id | name | description | category | price | size | type | colors | images | available | featured | dateAdded | variants |
+ *
+ * Notes:
+ * - images: comma-separated list of image filenames (e.g. "kar001,kar001-2,kar001-3")
+ * - variants: comma-separated list of variants (e.g. "Labrador,Golden Retriever,Schäfer")
  */
 
 const { google } = require("googleapis");
@@ -81,11 +85,28 @@ async function main() {
           size,
           type,
           colors,
-          image,
+          images,
           available,
           featured,
           dateAdded,
+          variants,
         ] = row;
+
+        // Parse images as array (comma-separated)
+        const imageList = images
+          ? images
+              .split(",")
+              .map((img) => img.trim())
+              .filter(Boolean)
+          : [];
+
+        // Parse variants as array (comma-separated)
+        const variantList = variants
+          ? variants
+              .split(",")
+              .map((v) => v.trim())
+              .filter(Boolean)
+          : [];
 
         return {
           id: id?.trim() || generateId(name),
@@ -98,7 +119,9 @@ async function main() {
           colors: colors
             ? colors.split(",").map((c) => c.trim().toLowerCase())
             : [],
-          image: image?.trim() || `images/artworks/${generateId(name)}.jpg`,
+          images: imageList.length > 0 ? imageList : [generateId(name)],
+          image: imageList.length > 0 ? imageList[0] : generateId(name), // Keep for backwards compatibility
+          variants: variantList,
           available: available?.toLowerCase() !== "false" && available !== "0",
           featured: featured?.toLowerCase() === "true" || featured === "1",
           dateAdded:

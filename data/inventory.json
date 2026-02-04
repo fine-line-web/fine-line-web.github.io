@@ -10,7 +10,9 @@
       "size": "A4",
       "type": "one-line akvarell",
       "colors": [],
+      "images": ["kar001", "kar002"],
       "image": "kar001",
+      "variants": ["Labrador", "Golden Retriever", "Schäfer", "Pudel", "Beagle", "Annan ras"],
       "available": true,
       "featured": true,
       "dateAdded": "2026-01-30"
@@ -24,7 +26,9 @@
       "size": "M",
       "type": "one-line akvarell",
       "colors": [],
+      "images": ["kar002"],
       "image": "kar002",
+      "variants": [],
       "available": false,
       "featured": true,
       "dateAdded": "2026-01-30"

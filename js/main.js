@@ -312,57 +312,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // =====================================================
-// COMMISSION FORM
-// =====================================================
-
-document.addEventListener("DOMContentLoaded", () => {
-  const commissionForm = document.getElementById("commissionForm");
-
-  if (commissionForm) {
-    commissionForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const formData = new FormData(commissionForm);
-      const button = commissionForm.querySelector('button[type="submit"]');
-      const originalText = button.textContent;
-
-      button.textContent = "Skickar...";
-      button.disabled = true;
-
-      // Build email body
-      const subject = encodeURIComponent(
-        "Ny beställningsförfrågan - Fine Line galleri",
-      );
-      const body = encodeURIComponent(`
-Ny förfrågan från hemsidan:
-
-Namn: ${formData.get("firstName")} ${formData.get("lastName")}
-E-post: ${formData.get("email")}
-Telefon: ${formData.get("phone") || "Ej angivet"}
-
-Typ av beställning: ${formData.get("projectType")}
-Önskad storlek: ${formData.get("size") || "Ej valt"}
-
-Beskrivning:
-${formData.get("message")}
-            `);
-
-      // Open email client as fallback
-      window.location.href = `mailto:hej@finelinegalleri.se?subject=${subject}&body=${body}`;
-
-      setTimeout(() => {
-        button.textContent = "Skickat!";
-
-        setTimeout(() => {
-          button.textContent = originalText;
-          button.disabled = false;
-        }, 2000);
-      }, 500);
-    });
-  }
-});
-
-// =====================================================
 // SMOOTH SCROLL FOR ANCHOR LINKS
 // =====================================================
 

@@ -46,12 +46,26 @@
             <div class="product-grid" id="productContainer">
                 <!-- Gallery -->
                 <div class="product-gallery">
-                    <div class="product-main-image">
-                        <div class="skeleton skeleton-image" id="mainImageSkeleton"></div>
-                        <img src="" alt="Konstverk" id="mainImage" style="display: none;">
-                    </div>
-                    <div class="product-thumbnails" id="thumbnails">
-                        <!-- Thumbnails populated by JS -->
+                    <div class="product-carousel" id="productCarousel">
+                        <div class="carousel-main">
+                            <div class="skeleton skeleton-image" id="mainImageSkeleton"></div>
+                            <img src="" alt="Konstverk" id="mainImage" style="display: none;">
+                            <!-- Carousel arrows (shown on hover) -->
+                            <button class="carousel-arrow carousel-arrow-prev" id="carouselPrev" aria-label="Föregående bild">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="15 18 9 12 15 6"></polyline>
+                                </svg>
+                            </button>
+                            <button class="carousel-arrow carousel-arrow-next" id="carouselNext" aria-label="Nästa bild">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9 6 15 12 9 18"></polyline>
+                                </svg>
+                            </button>
+                        </div>
+                        <!-- Carousel dots -->
+                        <div class="carousel-dots" id="carouselDots">
+                            <!-- Dots populated by JS -->
+                        </div>
                     </div>
                 </div>
 
@@ -89,10 +103,20 @@
                         </div>
                     </div>
 
+                    <!-- Variant selection dropdown -->
+                    <div class="product-selection" id="variantsContainer" style="display: none;">
+                        <!-- Variants dropdown populated by JS -->
+                    </div>
+
+                    <!-- Size selection dropdown -->
+                    <div class="product-selection" id="sizeSelectContainer" style="display: none;">
+                        <!-- Size dropdown populated by JS -->
+                    </div>
+
                     <div class="product-actions">
-                        <a href="mailto:hej@finelinegalleri.se?subject=Förfrågan: " class="btn btn-primary btn-lg" id="inquiryBtn">
-                            Skicka förfrågan
-                        </a>
+                        <button type="button" class="btn btn-primary btn-lg" id="orderBtn">
+                            Beställ
+                        </button>
                     </div>
                 </div>
             </div>

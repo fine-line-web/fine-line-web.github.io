@@ -1,345 +1,707 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Beställ ett skräddarsytt konstverk. Porträtt, djurmotiv eller något helt unikt – skapat speciellt för dig.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Beställ ett skräddarsytt konstverk. Porträtt, djurmotiv eller något helt unikt – skapat speciellt för dig."
+    />
     <title>Beställning | Fine Line galleri</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <span class="logo-text">Fine Line</span>
-                <span class="logo-sub">galleri</span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Öppna meny">
-                <span class="hamburger"></span>
-            </button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link">Hem</a></li>
-                <li><a href="galleri.html" class="nav-link">Galleri</a></li>
-                <li><a href="om-oss.html" class="nav-link">Om konstnären</a></li>
-                <li><a href="bestallning.html" class="nav-link active">Beställning</a></li>
-            </ul>
-        </div>
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-text">Fine Line</span>
+          <span class="logo-sub">galleri</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Öppna meny">
+          <span class="hamburger"></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Hem</a></li>
+          <li><a href="galleri.html" class="nav-link">Galleri</a></li>
+          <li><a href="om-oss.html" class="nav-link">Om konstnären</a></li>
+          <li>
+            <a href="bestallning.html" class="nav-link active">Beställning</a>
+          </li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Page Header -->
     <header class="page-header">
-        <div class="container">
-            <h1>Beställ ditt verk</h1>
-            <p>Låt mig skapa något unikt för dig. Ett personligt konstverk som berättar din historia.</p>
-        </div>
+      <div class="container">
+        <h1>Beställ ditt verk</h1>
+        <p>Låt mig skapa något unikt för dig</p>
+      </div>
     </header>
 
-    <!-- Commission Section -->
     <section class="commission-section">
-        <div class="container">
-            <div class="commission-intro">
-                <h2>Skräddarsydd konst</h2>
-                <p>
-                    Varje beställning är unik. Oavsett om du vill föreviga ditt husdjur, 
-                    skapa ett personligt porträtt eller överraska någon med en speciell 
-                    gåva – jag hjälper dig att förverkliga visionen.
-                </p>
-            </div>
-
-            <!-- Pricing Cards -->
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 class="pricing-title">Liten</h3>
-                    <div class="pricing-price">2 500 <span>kr</span></div>
-                    <p class="pricing-description">A4-format (21 × 30 cm)</p>
-                    <ul class="pricing-features">
-                        <li>Original konstverk</li>
-                        <li>En linje-teknik</li>
-                        <li>Akvarellfärger</li>
-                        <li>Signerat & daterat</li>
-                        <li>Leverans inom 2-3 veckor</li>
-                    </ul>
-                    <a href="#kontaktformular" class="btn btn-outline">Välj storlek</a>
-                </div>
-
-                <div class="pricing-card featured">
-                    <h3 class="pricing-title">Medium</h3>
-                    <div class="pricing-price">4 500 <span>kr</span></div>
-                    <p class="pricing-description">A3-format (30 × 42 cm)</p>
-                    <ul class="pricing-features">
-                        <li>Original konstverk</li>
-                        <li>En linje-teknik</li>
-                        <li>Akvarellfärger</li>
-                        <li>Signerat & daterat</li>
-                        <li>Leverans inom 2-3 veckor</li>
-                        <li>Digital skiss för godkännande</li>
-                    </ul>
-                    <a href="#kontaktformular" class="btn btn-primary">Välj storlek</a>
-                </div>
-
-                <div class="pricing-card">
-                    <h3 class="pricing-title">Stor</h3>
-                    <div class="pricing-price">7 500 <span>kr</span></div>
-                    <p class="pricing-description">50 × 70 cm</p>
-                    <ul class="pricing-features">
-                        <li>Original konstverk</li>
-                        <li>En linje-teknik</li>
-                        <li>Akvarellfärger</li>
-                        <li>Signerat & daterat</li>
-                        <li>Leverans inom 3-4 veckor</li>
-                        <li>Digital skiss för godkännande</li>
-                        <li>Premium förpackning</li>
-                    </ul>
-                    <a href="#kontaktformular" class="btn btn-outline">Välj storlek</a>
-                </div>
-            </div>
-
-            <!-- Process Steps -->
-            <div class="section-header centered">
-                <span class="section-tag">Så fungerar det</span>
-                <h2>Beställningsprocessen</h2>
-            </div>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <h3>Kontakt</h3>
-                    <p>Fyll i formuläret nedan med dina önskemål och bifoga gärna referensbilder.</p>
-                </div>
-                <div class="process-line"></div>
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <h3>Offert</h3>
-                    <p>Jag återkommer inom 24-48 timmar med en offert och tidsuppskattning.</p>
-                </div>
-                <div class="process-line"></div>
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <h3>Skapande</h3>
-                    <p>Efter godkänd skiss börjar arbetet. Du får uppdateringar under processens gång.</p>
-                </div>
-                <div class="process-line"></div>
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <h3>Leverans</h3>
-                    <p>Ditt verk skickas varsamt förpackat till din dörr, redo att hängas upp.</p>
-                </div>
-            </div>
+      <div class="container">
+        <!-- Process Steps -->
+        <div class="section-header centered">
+          <span class="section-tag">Så fungerar det</span>
+          <h2 class="section-title">Beställningsprocessen</h2>
         </div>
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-number">01</div>
+            <h3>Beställning</h3>
+            <p>
+              Du kontaktar mig med detaljer om vilken ras, om du har några
+              önskefärger eller känslor att representera
+            </p>
+          </div>
+          <div class="process-line"></div>
+          <div class="process-step">
+            <div class="step-number">02</div>
+            <h3>Respons</h3>
+            <p>
+              Inom kort så hör jag av mig ifall önskemålen går att uppfylla, och
+              meddelar att jag påbörjar konstverket
+            </p>
+          </div>
+          <div class="process-line"></div>
+          <div class="process-step">
+            <div class="step-number">03</div>
+            <h3>Skapande</h3>
+            <p>
+              Med omsorg och precision föds ditt unika konstverk till liv, jag
+              siktar på att vara klar inom 2 dagar från påbörjat verk
+            </p>
+          </div>
+          <div class="process-line"></div>
+          <div class="process-step">
+            <div class="step-number">04</div>
+            <h3>Betalning & Leverans</h3>
+            <p>
+              Ditt verk levereras varsamt förpackat, tillsammans med
+              instruktioner för betalning
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Contact Form Section -->
     <section class="contact-section" id="kontaktformular">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <span class="section-tag">Kontakt</span>
-                    <h2>Låt oss prata</h2>
-                    <p>
-                        Har du frågor eller vill diskutera ditt projekt? Fyll i formuläret 
-                        så återkommer jag så snart som möjligt. Du kan också nå mig direkt 
-                        via e-post eller telefon.
-                    </p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
-                            </div>
-                            <div class="contact-item-text">
-                                <h4>E-post</h4>
-                                <p><a href="mailto:hej@finelinegalleri.se">hej@finelinegalleri.se</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                    <line x1="8" y1="21" x2="16" y2="21"></line>
-                                    <line x1="12" y1="17" x2="12" y2="21"></line>
-                                </svg>
-                            </div>
-                            <div class="contact-item-text">
-                                <h4>Instagram</h4>
-                                <p><a href="#">@finelinegalleri</a></p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <polyline points="12 6 12 12 16 14"></polyline>
-                                </svg>
-                            </div>
-                            <div class="contact-item-text">
-                                <h4>Svarstid</h4>
-                                <p>Vanligtvis inom 24-48 timmar</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-tag">Kontakt</span>
+            <h2>Låt oss prata</h2>
+            <p>
+              Har du frågor eller vill diskutera ditt projekt? Fyll i formuläret
+              så återkommer jag så snart som möjligt. Du kan också nå mig direkt
+              via e-post eller telefon.
+            </p>
 
-                <form class="contact-form" id="commissionForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="firstName">Förnamn *</label>
-                            <input type="text" id="firstName" name="firstName" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="lastName">Efternamn *</label>
-                            <input type="text" id="lastName" name="lastName" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-post *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="projectType">Typ av beställning *</label>
-                            <select id="projectType" name="projectType" required>
-                                <option value="">Välj typ</option>
-                                <option value="portratt">Porträtt</option>
-                                <option value="djur">Djurmotiv</option>
-                                <option value="natur">Natur/Landskap</option>
-                                <option value="abstrakt">Abstrakt</option>
-                                <option value="annat">Annat</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="size">Önskad storlek</label>
-                            <select id="size" name="size">
-                                <option value="">Välj storlek</option>
-                                <option value="a4">Liten (A4)</option>
-                                <option value="a3">Medium (A3)</option>
-                                <option value="50x70">Stor (50×70 cm)</option>
-                                <option value="annan">Annan storlek</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Berätta om din vision *</label>
-                        <textarea id="message" name="message" rows="5" required 
-                            placeholder="Beskriv vad du har i åtanke. Inkludera gärna detaljer om motiv, färger, känsla och eventuella specialönskemål..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="referenceImages">Referensbilder (valfritt)</label>
-                        <input type="file" id="referenceImages" name="referenceImages" multiple accept="image/*">
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Skicka förfrågan</button>
-                </form>
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    ></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-item-text">
+                  <h4>E-post</h4>
+                  <p>
+                    <a href="mailto:hej@finelinegalleri.se"
+                      >hej@finelinegalleri.se</a
+                    >
+                  </p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <rect
+                      x="2"
+                      y="3"
+                      width="20"
+                      height="14"
+                      rx="2"
+                      ry="2"
+                    ></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                  </svg>
+                </div>
+                <div class="contact-item-text">
+                  <h4>Instagram</h4>
+                  <p><a href="#">@finelinegalleri</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-item-text">
+                  <h4>Svarstid</h4>
+                  <p>Vanligtvis inom 24-48 timmar</p>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <form class="contact-form" id="commissionForm">
+            <div class="form-group">
+              <label for="breed">Ras *</label>
+              <input
+                type="text"
+                id="breed"
+                name="breed"
+                required
+                placeholder="T.ex. Golden Retriever, Siames, etc."
+              />
+            </div>
+            <div class="form-group">
+              <label for="size">Storlek *</label>
+              <select id="size" name="size" required>
+                <option value="">Välj storlek</option>
+                <option value="A4">A4 (21 x 30 cm)</option>
+                <option value="A3">A3 (30 x 42 cm)</option>
+              </select>
+            </div>
+            <!-- Color pickers for background inspiration -->
+            <div class="form-group">
+              <div class="color-picker-row">
+                <div class="color-picker-group">
+                  <label for="bgColor1" class="color-picker-label"
+                    >Färg 1</label
+                  >
+                  <div class="color-picker-wrapper">
+                    <input
+                      type="color"
+                      id="bgColor1"
+                      name="bgColor1"
+                      value="#a3a3a3"
+                    />
+                    <input
+                      type="text"
+                      id="bgColor1Text"
+                      class="color-text-input"
+                      value="#a3a3a3"
+                      placeholder="#a3a3a3"
+                    />
+                    <button
+                      type="button"
+                      class="color-clear-btn"
+                      data-target="bgColor1"
+                      title="Rensa färg"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+                <div class="color-picker-group">
+                  <label for="bgColor2" class="color-picker-label"
+                    >Färg 2</label
+                  >
+                  <div class="color-picker-wrapper">
+                    <input
+                      type="color"
+                      id="bgColor2"
+                      name="bgColor2"
+                      value="#a5a5a5"
+                    />
+                    <input
+                      type="text"
+                      id="bgColor2Text"
+                      class="color-text-input"
+                      value="#a5a5a5"
+                      placeholder="#a5a5a5"
+                    />
+                    <button
+                      type="button"
+                      class="color-clear-btn"
+                      data-target="bgColor2"
+                      title="Rensa färg"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <p class="form-help" style="margin-bottom: var(--space-sm)">
+                Välj upp till två färger som inspiration för bakgrunden. Du kan
+                också beskriva färgerna i meddelandet nedan.
+              </p>
+            </div>
+            <hr class="form-divider" />
+            <div class="form-group">
+              <label for="email">E-post *</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="din@epost.se"
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">Förnamn *</label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  required
+                  placeholder="Ditt förnamn"
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Efternamn *</label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  required
+                  placeholder="Ditt efternamn"
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="street">Gatuadress *</label>
+              <input
+                type="text"
+                id="street"
+                name="street"
+                required
+                placeholder="Gatan 123"
+              />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="postalCode">Postnummer *</label>
+                <input
+                  type="text"
+                  id="postalCode"
+                  name="postalCode"
+                  required
+                  placeholder="123 45"
+                />
+              </div>
+              <div class="form-group">
+                <label for="city">Stad *</label>
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  required
+                  placeholder="Stockholm"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Extra meddelande (valfritt)</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                placeholder="Finns det något speciellt du vill att vi ska veta om din beställning? Du kan även beskriva önskade färger här."
+              ></textarea>
+            </div>
+            <div
+              id="formStatus"
+              class="form-status"
+              style="display: none"
+            ></div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="submitBtn"
+              style="width: 100%"
+            >
+              Skicka beställning
+            </button>
+          </form>
         </div>
+      </div>
     </section>
 
     <!-- FAQ Section -->
     <section class="section">
-        <div class="container">
-            <div class="section-header centered">
-                <span class="section-tag">FAQ</span>
-                <h2>Vanliga frågor</h2>
-            </div>
-            <div class="story-content">
-                <h4>Hur lång tid tar det att få mitt beställda verk?</h4>
-                <p>
-                    Normalt tar det 2-4 veckor beroende på storlek och komplexitet. 
-                    Vid större beställningar eller högsäsong kan det ta lite längre. 
-                    Du får alltid en tidsuppskattning i din offert.
-                </p>
-
-                <h4>Kan jag se en skiss innan det slutgiltiga verket skapas?</h4>
-                <p>
-                    Ja! För medium- och stora format ingår alltid en digital skiss 
-                    för godkännande. För mindre format kan detta läggas till mot 
-                    en tilläggskostnad.
-                </p>
-
-                <h4>Vad händer om jag inte är nöjd med resultatet?</h4>
-                <p>
-                    Din tillfredsställelse är viktig för mig. Om det slutgiltiga 
-                    verket avviker väsentligt från den godkända skissen, arbetar 
-                    vi tillsammans för att hitta en lösning.
-                </p>
-
-                <h4>Säljer ni även tryck av era verk?</h4>
-                <p>
-                    Ja, utvalda verk finns tillgängliga som högkvalitativa tryck. 
-                    Besök vårt <a href="galleri.html">galleri</a> för att se 
-                    tillgängliga alternativ.
-                </p>
-
-                <h4>Hur skickas verken?</h4>
-                <p>
-                    Alla verk skickas varsamt förpackade med försäkrad frakt inom 
-                    Sverige. Internationell frakt kan ordnas på begäran.
-                </p>
-            </div>
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">FAQ</span>
+          <h2>Vanliga frågor</h2>
         </div>
+        <div class="story-content">
+          <h4>Hur lång tid tar det att få mitt beställda verk?</h4>
+          <p>
+            Normalt tar det 2-4 veckor beroende på storlek och komplexitet. Vid
+            större beställningar eller högsäsong kan det ta lite längre. Du får
+            alltid en tidsuppskattning i din offert.
+          </p>
+
+          <h4>Kan jag se en skiss innan det slutgiltiga verket skapas?</h4>
+          <p>
+            Ja! För medium- och stora format ingår alltid en digital skiss för
+            godkännande. För mindre format kan detta läggas till mot en
+            tilläggskostnad.
+          </p>
+
+          <h4>Vad händer om jag inte är nöjd med resultatet?</h4>
+          <p>
+            Din tillfredsställelse är viktig för mig. Om det slutgiltiga verket
+            avviker väsentligt från den godkända skissen, arbetar vi tillsammans
+            för att hitta en lösning.
+          </p>
+
+          <h4>Säljer ni även tryck av era verk?</h4>
+          <p>
+            Ja, utvalda verk finns tillgängliga som högkvalitativa tryck. Besök
+            vårt <a href="galleri.html">galleri</a> för att se tillgängliga
+            alternativ.
+          </p>
+
+          <h4>Hur skickas verken?</h4>
+          <p>
+            Alla verk skickas varsamt förpackade med försäkrad frakt inom
+            Sverige. Internationell frakt kan ordnas på begäran.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="index.html" class="logo">
-                        <span class="logo-text">Fine Line</span>
-                        <span class="logo-sub">galleri</span>
-                    </a>
-                    <p>Unik konst med en linje – skapad med passion och precision.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Navigering</h4>
-                    <ul>
-                        <li><a href="index.html">Hem</a></li>
-                        <li><a href="galleri.html">Galleri</a></li>
-                        <li><a href="om-oss.html">Om konstnären</a></li>
-                        <li><a href="bestallning.html">Beställning</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Information</h4>
-                    <ul>
-                        <li><a href="villkor.html">Köpvillkor</a></li>
-                        <li><a href="frakt.html">Frakt & leverans</a></li>
-                        <li><a href="integritet.html">Integritetspolicy</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Kontakt</h4>
-                    <p>
-                        <a href="mailto:hej@finelinegalleri.se">hej@finelinegalleri.se</a>
-                    </p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Instagram" class="social-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
-                        <a href="#" aria-label="Facebook" class="social-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
-                        <a href="#" aria-label="Pinterest" class="social-link">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
-                        </a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <span class="logo-text">Fine Line</span>
+              <span class="logo-sub">galleri</span>
+            </a>
+            <p>Unik konst med en linje – skapad med passion och precision.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Navigering</h4>
+            <ul>
+              <li><a href="index.html">Hem</a></li>
+              <li><a href="galleri.html">Galleri</a></li>
+              <li><a href="om-oss.html">Om konstnären</a></li>
+              <li><a href="bestallning.html">Beställning</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Information</h4>
+            <ul>
+              <li><a href="villkor.html">Köpvillkor</a></li>
+              <li><a href="frakt.html">Frakt & leverans</a></li>
+              <li><a href="integritet.html">Integritetspolicy</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Kontakt</h4>
+            <p>
+              <a href="mailto:hej@finelinegalleri.se">hej@finelinegalleri.se</a>
+            </p>
+            <div class="social-links">
+              <a href="#" aria-label="Instagram" class="social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook" class="social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </a>
+              <a href="#" aria-label="Pinterest" class="social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"
+                  />
+                </svg>
+              </a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Fine Line galleri. Alla rättigheter förbehållna.</p>
-            </div>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Fine Line galleri. Alla rättigheter förbehållna.</p>
+        </div>
+      </div>
     </footer>
 
     <script src="js/main.js"></script>
-</body>
+    <script>
+      // Prefill form from URL parameters (from product page)
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Prefill breed/variant
+        const variant = urlParams.get("variant");
+        const produkt = urlParams.get("produkt");
+        if (variant) {
+          document.getElementById("breed").value = variant;
+        } else if (produkt) {
+          // If no variant but product name exists, show product in placeholder
+          document.getElementById("breed").placeholder = `För: ${produkt}`;
+        }
+
+        // Prefill size
+        const storlek = urlParams.get("storlek");
+        if (storlek) {
+          const sizeSelect = document.getElementById("size");
+          if (sizeSelect) {
+            // Match the value (A3 or A4)
+            for (let option of sizeSelect.options) {
+              if (option.value === storlek) {
+                option.selected = true;
+                break;
+              }
+            }
+          }
+        }
+
+        // Setup color pickers sync
+        setupColorPickers();
+      });
+
+      // Color picker functionality
+      function setupColorPickers() {
+        // Sync color picker with text input for both colors
+        ["bgColor1", "bgColor2"].forEach((id) => {
+          const colorInput = document.getElementById(id);
+          const textInput = document.getElementById(id + "Text");
+          const clearBtn = document.querySelector(
+            `.color-clear-btn[data-target="${id}"]`,
+          );
+
+          if (colorInput && textInput) {
+            // Sync color to text
+            colorInput.addEventListener("input", () => {
+              textInput.value = colorInput.value.toUpperCase();
+            });
+
+            // Sync text to color
+            textInput.addEventListener("input", () => {
+              const value = textInput.value;
+              if (/^#[0-9A-Fa-f]{6}$/.test(value)) {
+                colorInput.value = value;
+              }
+            });
+
+            textInput.addEventListener("blur", () => {
+              // Validate and fix format on blur
+              let value = textInput.value.trim();
+              if (!value.startsWith("#")) {
+                value = "#" + value;
+              }
+              if (/^#[0-9A-Fa-f]{6}$/.test(value)) {
+                textInput.value = value.toUpperCase();
+                colorInput.value = value;
+              } else {
+                textInput.value = colorInput.value.toUpperCase();
+              }
+            });
+          }
+
+          // Clear button
+          if (clearBtn) {
+            clearBtn.addEventListener("click", () => {
+              const defaultColor = id === "bgColor1" ? "#A3A3A3" : "#A5A5A5";
+              colorInput.value = defaultColor;
+              textInput.value = defaultColor;
+            });
+          }
+        });
+      }
+
+      // Handle form submission with Slack webhook
+      document
+        .getElementById("commissionForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const submitBtn = document.getElementById("submitBtn");
+          const formStatus = document.getElementById("formStatus");
+          const form = e.target;
+
+          // Disable button and show loading
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Skickar...";
+          formStatus.style.display = "none";
+
+          // Gather form data
+          const formData = {
+            firstName: document.getElementById("firstName").value,
+            lastName: document.getElementById("lastName").value,
+            breed: document.getElementById("breed").value,
+            size: document.getElementById("size").value,
+            email: document.getElementById("email").value,
+            street: document.getElementById("street").value,
+            postalCode: document.getElementById("postalCode").value,
+            city: document.getElementById("city").value,
+            bgColor1: document.getElementById("bgColor1").value,
+            bgColor2: document.getElementById("bgColor2").value,
+            message:
+              document.getElementById("message").value ||
+              "Inget extra meddelande",
+          };
+
+          // Get URL params for additional context
+          const urlParams = new URLSearchParams(window.location.search);
+          const produktNamn = urlParams.get("produkt") || "Ej specificerad";
+          const produktId = urlParams.get("produktId") || "";
+
+          // Build Slack message
+          const slackMessage = {
+            text: `🎨 Ny beställning från Fine Line galleri!`,
+            blocks: [
+              {
+                type: "header",
+                text: {
+                  type: "plain_text",
+                  text: "🎨 Ny beställning!",
+                  emoji: true,
+                },
+              },
+              {
+                type: "section",
+                fields: [
+                  {
+                    type: "mrkdwn",
+                    text: `*Produkt:*\n${produktNamn}`,
+                  },
+                  {
+                    type: "mrkdwn",
+                    text: `*Ras/Variant:*\n${formData.breed}`,
+                  },
+                  {
+                    type: "mrkdwn",
+                    text: `*Storlek:*\n${formData.size}`,
+                  },
+                  {
+                    type: "mrkdwn",
+                    text: `*Bakgrundsfärger:*\n${formData.bgColor1} | ${formData.bgColor2}`,
+                  },
+                ],
+              },
+              {
+                type: "section",
+                fields: [
+                  {
+                    type: "mrkdwn",
+                    text: `*Leveransadress:*\n${formData.firstName} ${formData.lastName}\n${formData.street}\n${formData.postalCode} ${formData.city}`,
+                  },
+                  {
+                    type: "mrkdwn",
+                    text: `*E-post:*\n${formData.email}`,
+                  },
+                ],
+              },
+              {
+                type: "section",
+                text: {
+                  type: "mrkdwn",
+                  text: `*Extra meddelande:*\n${formData.message}`,
+                },
+              },
+              {
+                type: "context",
+                elements: [
+                  {
+                    type: "mrkdwn",
+                    text: `Produkt-ID: ${produktId || "N/A"} | Skickad: ${new Date().toLocaleString("sv-SE")}`,
+                  },
+                ],
+              },
+            ],
+          };
+
+          try {
+            // Send to Slack webhook (assembled from parts for basic obfuscation)
+            // The actual values are injected during build from GitHub secrets
+            const _h = [
+              "aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMv",
+              "%%SLACK_PART_A%%",
+              "%%SLACK_PART_B%%",
+              "%%SLACK_PART_C%%",
+            ];
+            const _d = (s) => atob(s);
+            const _w = _d(_h[0]) + _h.slice(1).join("/");
+
+            const response = await fetch(_w, {
+              method: "POST",
+              body: JSON.stringify(slackMessage),
+              headers: {
+                "Content-Type": "application/json",
+              },
+              mode: "no-cors", // Slack webhooks don't support CORS
+            });
+
+            // Since mode is no-cors, we can't read the response
+            // Show success message
+            formStatus.className = "form-status success";
+            formStatus.innerHTML = `
+                    <strong>Tack för din beställning!</strong><br>
+                    Jag har tagit emot din förfrågan och återkommer så snart som möjligt via e-post till ${formData.email}.
+                `;
+            formStatus.style.display = "block";
+            form.reset();
+
+            // Scroll to status message
+            formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
+          } catch (error) {
+            console.error("Error sending to Slack:", error);
+            formStatus.className = "form-status error";
+            formStatus.innerHTML = `
+                    <strong>Något gick fel!</strong><br>
+                    Kunde inte skicka din beställning. Vänligen försök igen eller kontakta mig på
+                    <a href="mailto:hej@finelinegalleri.se">hej@finelinegalleri.se</a>
+                `;
+            formStatus.style.display = "block";
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Skicka beställning";
+          }
+        });
+    </script>
+  </body>
 </html>

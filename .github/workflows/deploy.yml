@@ -26,6 +26,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Inject Slack webhook
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          # Extract the three parts from the webhook URL (format: T.../B.../secret)
+          # URL format: https://hooks.slack.com/services/TXXXXX/BXXXXX/secretkey
+          WEBHOOK_PATH=$(echo "$SLACK_WEBHOOK_URL" | sed 's|https://hooks.slack.com/services/||')
+          PART_A=$(echo "$WEBHOOK_PATH" | cut -d'/' -f1)
+          PART_B=$(echo "$WEBHOOK_PATH" | cut -d'/' -f2)
+          PART_C=$(echo "$WEBHOOK_PATH" | cut -d'/' -f3)
+
+          # Replace placeholders in bestallning.html
+          sed -i "s|%%SLACK_PART_A%%|$PART_A|g" bestallning.html
+          sed -i "s|%%SLACK_PART_B%%|$PART_B|g" bestallning.html
+          sed -i "s|%%SLACK_PART_C%%|$PART_C|g" bestallning.html
+
+          echo "✅ Slack webhook injected successfully"
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
