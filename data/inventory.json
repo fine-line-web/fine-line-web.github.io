@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-05T12:50:34.700Z",
+  "lastUpdated": "2026-02-05T13:23:02.376Z",
   "items": [
     {
       "id": "test1",
@@ -10,9 +10,11 @@
       "size": "A4",
       "type": "one-line akvarell",
       "colors": [],
-      "images": ["kar001", "kar002"],
+      "images": [
+        "kar001"
+      ],
       "image": "kar001",
-      "variants": ["Labrador", "Golden Retriever", "Schäfer", "Pudel", "Beagle", "Annan ras"],
+      "variants": [],
       "available": true,
       "featured": true,
       "dateAdded": "2026-01-30"
@@ -26,7 +28,9 @@
       "size": "M",
       "type": "one-line akvarell",
       "colors": [],
-      "images": ["kar002"],
+      "images": [
+        "kar002"
+      ],
       "image": "kar002",
       "variants": [],
       "available": false,
