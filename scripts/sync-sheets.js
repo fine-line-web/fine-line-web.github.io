@@ -86,10 +86,10 @@ async function main() {
           type,
           colors,
           images,
+          variants,
           available,
           featured,
           dateAdded,
-          variants,
         ] = row;
 
         // Parse images as array (comma-separated)

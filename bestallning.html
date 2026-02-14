@@ -184,22 +184,26 @@
 
           <form class="contact-form" id="commissionForm">
             <div class="form-group">
-              <label for="breed">Ras *</label>
+              <label for="produkt">Produkt</label>
               <input
                 type="text"
-                id="breed"
-                name="breed"
-                required
-                placeholder="T.ex. Golden Retriever, Siames, etc."
+                id="produkt"
+                name="produkt"
+                readonly
+                tabindex="-1"
+                placeholder="–"
               />
             </div>
             <div class="form-group">
-              <label for="size">Storlek *</label>
-              <select id="size" name="size" required>
-                <option value="">Välj storlek</option>
-                <option value="A4">A4 (21 x 30 cm)</option>
-                <option value="A3">A3 (30 x 42 cm)</option>
-              </select>
+              <label for="size">Storlek</label>
+              <input
+                type="text"
+                id="size"
+                name="size"
+                readonly
+                tabindex="-1"
+                placeholder="–"
+              />
             </div>
             <!-- Color pickers for background inspiration -->
             <div class="form-group">
@@ -474,29 +478,19 @@
       document.addEventListener("DOMContentLoaded", () => {
         const urlParams = new URLSearchParams(window.location.search);
 
-        // Prefill breed/variant
-        const variant = urlParams.get("variant");
-        const produkt = urlParams.get("produkt");
-        if (variant) {
-          document.getElementById("breed").value = variant;
-        } else if (produkt) {
-          // If no variant but product name exists, show product in placeholder
-          document.getElementById("breed").placeholder = `För: ${produkt}`;
+        // Prefill product (name + variant)
+        const produkt = urlParams.get("produkt") || "";
+        const variant = urlParams.get("variant") || "";
+        const produktField = document.getElementById("produkt");
+        if (produktField) {
+          produktField.value = variant ? `${produkt} – ${variant}` : produkt;
         }
 
         // Prefill size
-        const storlek = urlParams.get("storlek");
-        if (storlek) {
-          const sizeSelect = document.getElementById("size");
-          if (sizeSelect) {
-            // Match the value (A3 or A4)
-            for (let option of sizeSelect.options) {
-              if (option.value === storlek) {
-                option.selected = true;
-                break;
-              }
-            }
-          }
+        const storlek = urlParams.get("storlek") || "";
+        const sizeField = document.getElementById("size");
+        if (sizeField) {
+          sizeField.value = storlek;
         }
 
         // Setup color pickers sync
@@ -572,7 +566,7 @@
           const formData = {
             firstName: document.getElementById("firstName").value,
             lastName: document.getElementById("lastName").value,
-            breed: document.getElementById("breed").value,
+            produkt: document.getElementById("produkt").value,
             size: document.getElementById("size").value,
             email: document.getElementById("email").value,
             street: document.getElementById("street").value,
@@ -607,11 +601,7 @@
                 fields: [
                   {
                     type: "mrkdwn",
-                    text: `*Produkt:*\n${produktNamn}`,
-                  },
-                  {
-                    type: "mrkdwn",
-                    text: `*Ras/Variant:*\n${formData.breed}`,
+                    text: `*Produkt:*\n${formData.produkt || produktNamn}`,
                   },
                   {
                     type: "mrkdwn",

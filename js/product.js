@@ -119,8 +119,12 @@ class ProductPage {
       description.innerHTML = `<p>${this.product.description || "Ingen beskrivning tillgänglig."}</p>`;
     }
 
-    // Details
-    this.setTextContent("productSize", this.product.size || "-");
+    // Details — show "Valbart" when multiple sizes
+    const sizes = ProductPage.parseList(this.product.size);
+    this.setTextContent(
+      "productSize",
+      sizes.length > 1 ? "Valbart" : this.product.size || "-",
+    );
     this.setTextContent("productType", this.product.type || "Original");
     this.setTextContent(
       "productAvailability",
@@ -150,6 +154,17 @@ class ProductPage {
     this.renderSizeDropdown();
   }
 
+  /**
+   * Parse a comma-separated field into an array of trimmed, non-empty strings.
+   */
+  static parseList(value) {
+    if (!value) return [];
+    return value
+      .split(",")
+      .map((v) => v.trim())
+      .filter(Boolean);
+  }
+
   renderVariantsDropdown() {
     const container = document.getElementById("variantsContainer");
     if (!container) return;
@@ -161,20 +176,114 @@ class ProductPage {
       return;
     }
 
+    // Single variant: auto-select, don't show selector
+    if (variants.length === 1) {
+      this.selectedVariant = variants[0];
+      container.style.display = "none";
+      return;
+    }
+
+    // Multiple variants: show searchable dropdown
     container.style.display = "block";
     container.innerHTML = `
-      <label for="variantSelect">Välj variant *</label>
-      <select id="variantSelect" class="product-select" required>
-        <option value="">-- Välj variant --</option>
-        ${variants.map((v) => `<option value="${v}">${v}</option>`).join("")}
-      </select>
+      <label for="variantSearchInput">Välj variant *</label>
+      <div class="searchable-select" id="variantSearchable">
+        <input type="text" class="searchable-select-input" id="variantSearchInput"
+               placeholder="-- Välj variant --" autocomplete="off" />
+        <div class="searchable-select-arrow"></div>
+        <ul class="searchable-select-options" id="variantOptions">
+          ${variants.map((v) => `<li class="searchable-select-option" data-value="${v}">${v}</li>`).join("")}
+        </ul>
+      </div>
     `;
 
-    const select = document.getElementById("variantSelect");
-    select.addEventListener("change", (e) => {
-      this.selectedVariant = e.target.value;
+    this.initSearchableSelect("variantSearchable", (value) => {
+      this.selectedVariant = value;
+      this.tryShowVariantImage(value);
       this.updateOrderButton();
     });
+  }
+
+  /**
+   * Initialise a searchable select widget by container ID.
+   * Calls onSelect(value) when the user picks an option.
+   */
+  initSearchableSelect(containerId, onSelect) {
+    const wrapper = document.getElementById(containerId);
+    if (!wrapper) return;
+
+    const input = wrapper.querySelector(".searchable-select-input");
+    const list = wrapper.querySelector(".searchable-select-options");
+    const allOptions = Array.from(
+      list.querySelectorAll(".searchable-select-option"),
+    );
+
+    const open = () => {
+      wrapper.classList.add("open");
+      filterOptions("");
+    };
+    const close = () => {
+      wrapper.classList.remove("open");
+    };
+
+    const filterOptions = (query) => {
+      const q = query.toLowerCase();
+      allOptions.forEach((opt) => {
+        const match = opt.textContent.toLowerCase().includes(q);
+        opt.style.display = match ? "" : "none";
+      });
+    };
+
+    input.addEventListener("focus", open);
+    input.addEventListener("input", () => {
+      open();
+      filterOptions(input.value);
+    });
+
+    allOptions.forEach((opt) => {
+      opt.addEventListener("mousedown", (e) => {
+        e.preventDefault(); // keep focus
+        input.value = opt.dataset.value;
+        input.classList.remove("error");
+        close();
+        onSelect(opt.dataset.value);
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!wrapper.contains(e.target)) close();
+    });
+  }
+
+  /**
+   * When a variant is selected, try to find and display a matching image.
+   * Convention: variant "Norsk Skogkatt" → norsk_skogkatt.jpg or norsk_skogkatt_målad.jpg
+   */
+  tryShowVariantImage(variant) {
+    if (!variant) return;
+
+    const slug = variant.toLowerCase().replaceAll(" ", "_");
+
+    // Try multiple candidate filenames
+    const candidates = [`${slug}`, `${slug}_målad`];
+
+    const mainImage = document.getElementById("mainImage");
+    const mainImageSkeleton = document.getElementById("mainImageSkeleton");
+    if (!mainImage) return;
+
+    // Try each candidate; use the first one that loads
+    const tryNext = (i) => {
+      if (i >= candidates.length) return; // none found, keep current image
+      const img = new Image();
+      img.onload = () => {
+        mainImage.src = img.src;
+        if (mainImageSkeleton) mainImageSkeleton.style.display = "none";
+        mainImage.style.display = "block";
+      };
+      img.onerror = () => tryNext(i + 1);
+      img.src = getImageUrl(candidates[i]);
+    };
+    tryNext(0);
   }
 
   setupCarousel() {
@@ -294,13 +403,28 @@ class ProductPage {
     const container = document.getElementById("sizeSelectContainer");
     if (!container) return;
 
+    const sizes = ProductPage.parseList(this.product.size);
+
+    // No sizes at all — hide
+    if (sizes.length === 0) {
+      container.style.display = "none";
+      return;
+    }
+
+    // Single size — auto-select, hide dropdown
+    if (sizes.length === 1) {
+      this.selectedSize = sizes[0];
+      container.style.display = "none";
+      return;
+    }
+
+    // Multiple sizes — show dropdown
     container.style.display = "block";
     container.innerHTML = `
       <label for="sizeSelect">Välj storlek *</label>
       <select id="sizeSelect" class="product-select" required>
         <option value="">-- Välj storlek --</option>
-        <option value="A4">A4 (21 × 30 cm)</option>
-        <option value="A3">A3 (30 × 42 cm)</option>
+        ${sizes.map((s) => `<option value="${s}">${s}</option>`).join("")}
       </select>
     `;
 
@@ -319,22 +443,23 @@ class ProductPage {
       e.preventDefault();
 
       const variants = this.product?.variants || [];
-      const variantSelect = document.getElementById("variantSelect");
       const sizeSelect = document.getElementById("sizeSelect");
 
-      // Validate variant selection (only if variants exist)
-      if (variants.length > 0 && !this.selectedVariant) {
-        variantSelect?.classList.add("error");
-        variantSelect?.focus();
-        alert("Vänligen välj en variant innan du fortsätter.");
+      // Validate variant selection (only if variants exist and more than 1)
+      const variantInput = document.querySelector(
+        "#variantSearchable .searchable-select-input",
+      );
+      if (variants.length > 1 && !this.selectedVariant) {
+        if (variantInput) variantInput.classList.add("error");
+        variantInput?.focus();
         return;
       }
 
-      // Validate size selection
-      if (!this.selectedSize) {
+      // Validate size selection (only if multiple sizes)
+      const sizes = ProductPage.parseList(this.product?.size);
+      if (sizes.length > 1 && !this.selectedSize) {
         sizeSelect?.classList.add("error");
         sizeSelect?.focus();
-        alert("Vänligen välj en storlek innan du fortsätter.");
         return;
       }
 
@@ -351,13 +476,14 @@ class ProductPage {
   }
 
   updateOrderButton() {
-    const orderBtn = document.getElementById("orderBtn");
-    const variantSelect = document.getElementById("variantSelect");
     const sizeSelect = document.getElementById("sizeSelect");
 
     // Remove error class when selection is made
-    if (this.selectedVariant && variantSelect) {
-      variantSelect.classList.remove("error");
+    const variantInput = document.querySelector(
+      "#variantSearchable .searchable-select-input",
+    );
+    if (this.selectedVariant && variantInput) {
+      variantInput.classList.remove("error");
     }
     if (this.selectedSize && sizeSelect) {
       sizeSelect.classList.remove("error");
