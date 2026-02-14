@@ -1,41 +1,49 @@
 {
-  "lastUpdated": "2026-02-14T21:18:57.564Z",
+  "lastUpdated": "2026-02-14T22:00:06.506Z",
   "items": [
     {
-      "id": "test1",
+      "id": "hund",
       "name": "Hund",
-      "description": "Skriv in vilken ras du har, och vilka färger, så sköter jag resten!",
+      "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade hund.",
       "category": "hund",
       "price": 250,
-      "size": "A4",
+      "size": "Valbart",
       "type": "one-line akvarell",
       "colors": [],
       "images": [
-        "kar001"
+        "australian_sheperd_målad",
+        "jack_russel_målad",
+        "pomeranian_målad",
+        "västgötaspets_målad"
       ],
-      "image": "kar001",
-      "variants": [],
+      "image": "australian_sheperd_målad",
+      "variants": [
+        "2026-01-30"
+      ],
       "available": true,
       "featured": true,
-      "dateAdded": "2026-01-30"
+      "dateAdded": "TRUE"
     },
     {
-      "id": "test1",
-      "name": "Testar ännu mer",
-      "description": "Bara testar en produkt",
+      "id": "katt",
+      "name": "Katt",
+      "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade katt.",
       "category": "katt",
-      "price": 1337,
-      "size": "M",
+      "price": 250,
+      "size": "Valbart",
       "type": "one-line akvarell",
       "colors": [],
       "images": [
-        "kar002"
+        "norsk_skogkatt_målad",
+        "norsk_skogkatt_målad1"
       ],
-      "image": "kar002",
-      "variants": [],
-      "available": false,
+      "image": "norsk_skogkatt_målad",
+      "variants": [
+        "2026-01-30"
+      ],
+      "available": true,
       "featured": true,
-      "dateAdded": "2026-01-30"
+      "dateAdded": "TRUE"
     }
   ]
 }
