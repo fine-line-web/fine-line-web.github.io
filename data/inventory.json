@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-15T16:22:49.722Z",
+  "lastUpdated": "2026-02-15T18:28:03.745Z",
   "items": [
     {
       "id": "hund",
@@ -13,7 +13,9 @@
       "images": [
         "australian_shepherd_målad",
         "jack_russell_terrier_målad",
+        "labrador_retriever_målad",
         "pomeranian_målad",
+        "tax_korthårig_målad",
         "västgötaspets_målad"
       ],
       "image": "australian_shepherd_målad",
@@ -386,8 +388,7 @@
       "type": "one-line akvarell",
       "colors": [],
       "images": [
-        "norsk_skogkatt_målad",
-        "norsk_skogkatt_målad1"
+        "norsk_skogkatt_målad"
       ],
       "image": "norsk_skogkatt_målad",
       "variants": [
@@ -452,9 +453,10 @@
       "type": "one-line akvarell",
       "colors": [],
       "images": [
-        "hast"
+        "galopperande_häst",
+        "stegrande_häst"
       ],
-      "image": "hast",
+      "image": "galopperande_häst",
       "variants": [
         "Stegrande Häst",
         "Galopperande Häst",
