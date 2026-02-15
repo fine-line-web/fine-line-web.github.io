@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-15T15:19:58.301Z",
+  "lastUpdated": "2026-02-15T16:22:49.722Z",
   "items": [
     {
       "id": "hund",
@@ -441,6 +441,52 @@
       "available": true,
       "featured": true,
       "dateAdded": "2026-01-30"
+    },
+    {
+      "id": "häst",
+      "name": "Häst",
+      "description": "Välj typ, storlek och två färger så skapar jag en personlig tavla.",
+      "category": "",
+      "price": 550,
+      "size": "A4 (21x30cm), A3 (30x40cm)",
+      "type": "one-line akvarell",
+      "colors": [],
+      "images": [
+        "hast"
+      ],
+      "image": "hast",
+      "variants": [
+        "Stegrande Häst",
+        "Galopperande Häst",
+        "Islandshäst",
+        "Shetlandsponny",
+        "Frieser Häst"
+      ],
+      "available": true,
+      "featured": true,
+      "dateAdded": "2026-02-15"
+    },
+    {
+      "id": "Smådjur",
+      "name": "Smådjur",
+      "description": "Välj typ, storlek och två färger så skapar jag en personlig tavla på ditt älskade husdjur.",
+      "category": "",
+      "price": 250,
+      "size": "A5 (15x21cm), A4 (21x30cm), A3 (30x40cm)",
+      "type": "one-line akvarell",
+      "colors": [],
+      "images": [
+        "smadjur"
+      ],
+      "image": "smadjur",
+      "variants": [
+        "Kanin",
+        "Vädurskanin",
+        "Råtta"
+      ],
+      "available": true,
+      "featured": true,
+      "dateAdded": "2026-02-15"
     }
   ]
 }
