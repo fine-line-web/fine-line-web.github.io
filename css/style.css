@@ -1099,6 +1099,22 @@ p {
     color: var(--color-white);
 }
 
+.filter-btn-skeleton {
+    display: inline-block;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 100px;
+}
+
+.artwork-card-skeleton {
+    display: flex;
+    flex-direction: column;
+}
+
+.artwork-card-skeleton .artwork-info {
+    padding: var(--space-md) 0;
+}
+
 .sort-select {
     padding: var(--space-xs) var(--space-md);
     font-size: 0.8125rem;
