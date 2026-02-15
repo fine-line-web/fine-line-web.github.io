@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-15T19:20:47.893Z",
+  "lastUpdated": "2026-02-15T20:10:56.135Z",
   "items": [
     {
       "id": "hund",
@@ -11,6 +11,7 @@
       "type": "one-line akvarell",
       "colors": [],
       "images": [
+        "category-dog",
         "australian_shepherd_målad",
         "jack_russell_terrier_målad",
         "labrador_retriever_målad",
@@ -18,7 +19,7 @@
         "tax_korthårig_målad",
         "västgötaspets_målad"
       ],
-      "image": "australian_shepherd_målad",
+      "image": "category-dog",
       "variants": [
         "Affenpinscher",
         "Afghanhund",
@@ -388,9 +389,10 @@
       "type": "one-line akvarell",
       "colors": [],
       "images": [
+        "category-cat",
         "norsk_skogkatt_målad"
       ],
-      "image": "norsk_skogkatt_målad",
+      "image": "category-cat",
       "variants": [
         "Abessinier",
         "American Curl",
@@ -453,10 +455,10 @@
       "type": "one-line akvarell",
       "colors": [],
       "images": [
-        "galopperande_häst",
-        "stegrande_häst"
+        "stegrande_häst",
+        "galopperande_häst shetlandsponny"
       ],
-      "image": "galopperande_häst",
+      "image": "stegrande_häst",
       "variants": [
         "Stegrande Häst",
         "Galopperande Häst",
@@ -478,9 +480,9 @@
       "type": "one-line akvarell",
       "colors": [],
       "images": [
-        "smadjur"
+        "kanin"
       ],
-      "image": "smadjur",
+      "image": "kanin",
       "variants": [
         "Kanin",
         "Vädurskanin",
