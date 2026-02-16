@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-02-16T14:02:40.879Z",
+  "lastUpdated": "2026-02-16T15:36:24.271Z",
   "items": [
     {
       "id": "hund",
@@ -391,7 +391,9 @@
       "colors": [],
       "images": [
         "category-cat",
-        "norsk_skogkatt_målad"
+        "norsk_skogkatt_målad",
+        "sibirisk_katt_målad",
+        "perser_målad"
       ],
       "image": "category-cat",
       "variants": [
@@ -458,6 +460,7 @@
       "images": [
         "stegrande_häst",
         "galopperande_häst",
+        "islandshäst",
         "shetlandsponny"
       ],
       "image": "stegrande_häst",
