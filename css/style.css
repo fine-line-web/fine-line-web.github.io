@@ -666,13 +666,14 @@ p {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-lg);
+    display: flex;
+    justify-content: center;
 }
 
 .image-frame img {
-    width: 100%;
+    width: 70%;
     aspect-ratio: 4/5;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .watercolor-accent {
@@ -749,9 +750,10 @@ p {
 
 .category-content h3 {
     font-family: var(--font-display);
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     color: var(--color-white);
     margin-bottom: var(--space-xs);
+    text-align: center;
 }
 
 .category-content p {
@@ -1486,13 +1488,10 @@ p {
     line-height: 1.8;
 }
 
-.about-hero-image .image-frame {
-    box-shadow: var(--shadow-lg);
-}
 
 /* Story Section */
 .story-section {
-    padding: var(--space-3xl) 0;
+    padding-bottom: 8rem;
 }
 
 .story-content {
