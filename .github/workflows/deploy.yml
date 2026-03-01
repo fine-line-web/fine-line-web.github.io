@@ -42,6 +42,11 @@ jobs:
           sed -i "s|%%SLACK_PART_B%%|$PART_B|g" bestallning.html
           sed -i "s|%%SLACK_PART_C%%|$PART_C|g" bestallning.html
 
+          # Replace placeholders in kontakt.html
+          sed -i "s|%%SLACK_PART_A%%|$PART_A|g" kontakt.html
+          sed -i "s|%%SLACK_PART_B%%|$PART_B|g" kontakt.html
+          sed -i "s|%%SLACK_PART_C%%|$PART_C|g" kontakt.html
+
           echo "✅ Slack webhook injected successfully"
 
       - name: Setup Pages
