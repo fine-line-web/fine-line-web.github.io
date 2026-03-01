@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kontakta Fine Line galleri. Skicka ett meddelande så återkommer jag så snart som möjligt."
+    />
+    <title>Kontakt | Fine Line galleri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+      <div class="nav-container">
+        <a href="index.html" class="logo">
+          <span class="logo-text">Fine Line</span>
+          <span class="logo-sub">galleri</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Öppna meny">
+          <span class="hamburger"></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html" class="nav-link">Hem</a></li>
+          <li><a href="galleri.html" class="nav-link">Galleri</a></li>
+          <li><a href="om-oss.html" class="nav-link">Om konstnären</a></li>
+          <li><a href="kontakt.html" class="nav-link active">Kontakt</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+      <div class="container">
+        <h1>Kontakta mig</h1>
+        <p>
+          Har du frågor eller funderingar? Skicka ett meddelande så återkommer
+          jag så snart som möjligt.
+        </p>
+      </div>
+    </header>
+
+    <!-- Contact Form Section -->
+    <section class="contact-section" id="kontaktformular">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <span class="section-tag">Kontakt</span>
+            <h2>Hör av dig</h2>
+            <p>Fyll i formuläret så återkommer jag så snart som möjligt.</p>
+
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div class="contact-item-text">
+                  <h4>Svarstid</h4>
+                  <p>Vanligtvis inom 24-48 timmar</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="email">E-post (för svar, valfri)</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="din@epost.se"
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">Meddelande *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+                placeholder="Skriv ditt meddelande här..."
+              ></textarea>
+            </div>
+            <div
+              id="formStatus"
+              class="form-status"
+              style="display: none"
+            ></div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="submitBtn"
+              style="width: 100%"
+            >
+              Skicka meddelande
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <span class="logo-text">Fine Line</span>
+              <span class="logo-sub">galleri</span>
+            </a>
+            <p>Unik konst med en linje – skapad med passion och precision.</p>
+          </div>
+          <div class="footer-links">
+            <h4>Navigering</h4>
+            <ul>
+              <li><a href="index.html">Hem</a></li>
+              <li><a href="galleri.html">Galleri</a></li>
+              <li><a href="om-oss.html">Om konstnären</a></li>
+              <li><a href="kontakt.html">Kontakt</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h4>Information</h4>
+            <ul>
+              <li><a href="villkor.html">Köpvillkor</a></li>
+              <li><a href="frakt.html">Frakt & leverans</a></li>
+              <li><a href="integritet.html">Integritetspolicy</a></li>
+            </ul>
+          </div>
+          <div class="footer-contact">
+            <h4>Kontakt</h4>
+            <p>
+              <a href="kontakt.html">Skicka ett meddelande</a>
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 Fine Line galleri. Alla rättigheter förbehållna.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const submitBtn = document.getElementById("submitBtn");
+          const formStatus = document.getElementById("formStatus");
+          const form = e.target;
+
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Skickar...";
+          formStatus.style.display = "none";
+
+          const email = document.getElementById("email").value || "Ej angiven";
+          const message = document.getElementById("message").value;
+
+          const slackMessage = {
+            text: `✉️ Nytt kontaktmeddelande från Fine Line galleri!`,
+            blocks: [
+              {
+                type: "header",
+                text: {
+                  type: "plain_text",
+                  text: "✉️ Nytt kontaktmeddelande!",
+                  emoji: true,
+                },
+              },
+              {
+                type: "section",
+                fields: [
+                  {
+                    type: "mrkdwn",
+                    text: `*E-post:*\n${email}`,
+                  },
+                ],
+              },
+              {
+                type: "section",
+                text: {
+                  type: "mrkdwn",
+                  text: `*Meddelande:*\n${message}`,
+                },
+              },
+              {
+                type: "context",
+                elements: [
+                  {
+                    type: "mrkdwn",
+                    text: `Skickad: ${new Date().toLocaleString("sv-SE")}`,
+                  },
+                ],
+              },
+            ],
+          };
+
+          try {
+            // Reuse same obfuscated Slack webhook
+            const _h = [
+              "aHR0cHM6Ly9ob29rcy5zbGFjay5jb20vc2VydmljZXMv",
+              "%%SLACK_PART_A%%",
+              "%%SLACK_PART_B%%",
+              "%%SLACK_PART_C%%",
+            ];
+            const _d = (s) => atob(s);
+            const _w = _d(_h[0]) + _h.slice(1).join("/");
+
+            await fetch(_w, {
+              method: "POST",
+              body: JSON.stringify(slackMessage),
+              headers: {
+                "Content-Type": "application/json",
+              },
+              mode: "no-cors",
+            });
+
+            formStatus.className = "form-status success";
+            formStatus.innerHTML = `
+              <strong>Tack för ditt meddelande!</strong><br>
+              ${email !== "Ej angiven" ? `Jag återkommer så snart som möjligt till ${email}.` : "Jag har tagit emot ditt meddelande."}
+            `;
+            formStatus.style.display = "block";
+            form.reset();
+            formStatus.scrollIntoView({ behavior: "smooth", block: "center" });
+          } catch (error) {
+            console.error("Error sending to Slack:", error);
+            formStatus.className = "form-status error";
+            formStatus.innerHTML = `
+              <strong>Något gick fel!</strong><br>
+              Kunde inte skicka ditt meddelande. Vänligen försök igen senare.
+            `;
+            formStatus.style.display = "block";
+          } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Skicka meddelande";
+          }
+        });
+    </script>
+  </body>
+</html>
