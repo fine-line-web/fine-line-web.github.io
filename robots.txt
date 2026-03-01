@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /bestallning.html
+Disallow: /produkt.html
+
+Sitemap: https://fine-line-web.github.io/sitemap.xml
