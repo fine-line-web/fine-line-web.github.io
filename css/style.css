@@ -825,6 +825,7 @@ p {
     max-width: 800px;
     margin: 0 auto;
     overflow: hidden;
+    height: 280px;
 }
 
 .testimonial {
@@ -1249,12 +1250,12 @@ p {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background-color: var(--color-cream);
 }
 
 .carousel-main img {
     width: 100%;
     aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
     object-fit: contain;
     display: block;
 }
