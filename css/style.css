@@ -1250,11 +1250,13 @@ p {
     position: relative;
     border-radius: var(--radius-lg);
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    aspect-ratio: 4/5;
 }
 
 .carousel-main img {
     width: 100%;
-    aspect-ratio: 4/5;
     border-radius: var(--radius-lg);
     object-fit: contain;
     display: block;
