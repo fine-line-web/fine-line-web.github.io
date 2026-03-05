@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T15:44:39.605Z",
+  "lastUpdated": "2026-03-05T17:58:23.867Z",
   "items": [
     {
       "id": "hund",
@@ -11,7 +11,7 @@
         450,
         650
       ],
-      "size": "A5 (15x21cm), A4 (21x30cm), A3 (30x40cm)",
+      "size": "13x18cm, 21x30cm, 30x40cm",
       "type": "one-line akvarell",
       "colors": [],
       "images": [
@@ -394,7 +394,7 @@
         450,
         650
       ],
-      "size": "A5 (15x21cm), A4 (21x30cm), A3 (30x40cm)",
+      "size": "13x18cm, 21x30cm, 30x40cm",
       "type": "one-line akvarell",
       "colors": [],
       "images": [
@@ -465,7 +465,7 @@
         550,
         750
       ],
-      "size": "A4 (21x30cm), A3 (30x40cm)",
+      "size": "21x30cm, 30x40cm",
       "type": "one-line akvarell",
       "colors": [],
       "images": [
@@ -496,7 +496,7 @@
         450,
         650
       ],
-      "size": "A5 (15x21cm), A4 (21x30cm), A3 (30x40cm)",
+      "size": "13x18cm, 21x30cm, 30x40cm",
       "type": "one-line akvarell",
       "colors": [],
       "images": [
