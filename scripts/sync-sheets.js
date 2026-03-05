@@ -113,7 +113,12 @@ async function main() {
           name: name?.trim() || "",
           description: description?.trim() || "",
           category: category?.trim() || "",
-          price: parseFloat(price) || null,
+          price: price
+            ? price
+                .split(",")
+                .map((p) => parseInt(p.trim(), 10))
+                .filter((p) => !isNaN(p))
+            : [],
           size: size?.trim() || "",
           type: type?.trim() || "Original",
           colors: colors

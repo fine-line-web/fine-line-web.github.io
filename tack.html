@@ -44,13 +44,26 @@
         <div class="thank-you-content">
           <div class="thank-you-icon">
             <svg width="72" height="72" viewBox="0 0 72 72" fill="none">
-              <circle cx="36" cy="36" r="35" stroke="var(--color-accent-sage)" stroke-width="2"/>
-              <path d="M22 36L32 46L50 28" stroke="var(--color-accent-sage)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle
+                cx="36"
+                cy="36"
+                r="35"
+                stroke="var(--color-accent-sage)"
+                stroke-width="2"
+              />
+              <path
+                d="M22 36L32 46L50 28"
+                stroke="var(--color-accent-sage)"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
             </svg>
           </div>
           <h1>Tack för din beställning!</h1>
           <p class="thank-you-subtitle" id="thankYouMessage">
-            Din förfrågan har tagits emot. Jag återkommer via e-post inom 24–48 timmar.
+            Din förfrågan har tagits emot. Jag återkommer via e-post inom 24–48
+            timmar.
           </p>
           <div class="thank-you-details" id="orderDetails"></div>
         </div>
@@ -173,7 +186,7 @@
                     <h3 class="artwork-title">${item.name}</h3>
                     <div class="artwork-meta">
                       <span class="artwork-category">${item.type || ""}</span>
-                      <span class="artwork-price">från ${item.price} kr</span>
+                      <span class="artwork-price">${formatCardPrice(item.price)}</span>
                     </div>
                   </div>
                 </a>

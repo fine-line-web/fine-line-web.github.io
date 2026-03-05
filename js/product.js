@@ -112,7 +112,7 @@ class ProductPage {
     // Product info - replace skeleton content
     this.setTextContent("productCategory", this.product.category || "");
     this.setTextContent("productTitle", this.product.name);
-    this.setTextContent("productPrice", formatPrice(this.product.price));
+    this.setTextContent("productPrice", formatCardPrice(this.product.price));
 
     const description = document.getElementById("productDescription");
     if (description) {
@@ -431,8 +431,23 @@ class ProductPage {
     const select = document.getElementById("sizeSelect");
     select.addEventListener("change", (e) => {
       this.selectedSize = e.target.value;
+      this.updatePriceForSize();
       this.updateOrderButton();
     });
+  }
+
+  /**
+   * Update the displayed price based on the selected size.
+   */
+  updatePriceForSize() {
+    const sizes = ProductPage.parseList(this.product.size);
+    const sizeIndex = sizes.indexOf(this.selectedSize);
+    if (sizeIndex === -1) return;
+
+    const price = getPriceForSizeIndex(this.product.price, sizeIndex);
+    if (price != null) {
+      this.setTextContent("productPrice", formatPrice(price));
+    }
   }
 
   setupOrderButton() {
@@ -572,7 +587,7 @@ class ProductPage {
                         <h3 class="artwork-title">${item.name}</h3>
                         <div class="artwork-meta">
                             <span class="artwork-category">${item.category || ""}</span>
-                            <span class="artwork-price">${formatPrice(item.price)}</span>
+                            <span class="artwork-price">${formatCardPrice(item.price)}</span>
                         </div>
                         ${colorTags ? `<div class="color-tags">${colorTags}</div>` : ""}
                     </div>

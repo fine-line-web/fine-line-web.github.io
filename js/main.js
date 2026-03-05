@@ -185,7 +185,7 @@ function createArtworkCard(item) {
                     <h3 class="artwork-title">${item.name}</h3>
                     <div class="artwork-meta">
                         <span class="artwork-category">${item.category}</span>
-                        <span class="artwork-price">${formatPrice(item.price)}</span>
+                        <span class="artwork-price">${formatCardPrice(item.price)}</span>
                     </div>
                     ${colorTags ? `<div class="color-tags">${colorTags}</div>` : ""}
                 </div>
@@ -215,13 +215,37 @@ function createPlaceholderCards(count) {
 // =====================================================
 
 function formatPrice(price) {
-  if (!price) return "Pris på förfrågan";
+  if (!price && price !== 0) return "Pris på förfrågan";
+  // Support both single number and array of numbers
+  const amount = Array.isArray(price) ? price[0] : price;
+  if (!amount && amount !== 0) return "Pris på förfrågan";
   return new Intl.NumberFormat("sv-SE", {
     style: "currency",
     currency: "SEK",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(price);
+  }).format(amount);
+}
+
+/**
+ * Format price for gallery/artwork cards.
+ * Shows "Från X kr" when there are multiple prices, otherwise just the price.
+ */
+function formatCardPrice(price) {
+  if (Array.isArray(price) && price.length > 1) {
+    return `Från ${formatPrice(price[0])}`;
+  }
+  return formatPrice(price);
+}
+
+/**
+ * Get the price for a specific size index from a prices array.
+ * If the index exceeds available prices, uses the last price in the list.
+ */
+function getPriceForSizeIndex(prices, sizeIndex) {
+  if (!Array.isArray(prices) || prices.length === 0) return null;
+  const idx = Math.min(sizeIndex, prices.length - 1);
+  return prices[idx];
 }
 
 function getImageUrl(image) {

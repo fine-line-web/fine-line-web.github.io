@@ -234,7 +234,7 @@ class GalleryManager {
                         <h3 class="artwork-title">${item.name}</h3>
                         <div class="artwork-meta">
                             <span class="artwork-category">${item.category || ""}</span>
-                            <span class="artwork-price">${formatPrice(item.price)}</span>
+                            <span class="artwork-price">${formatCardPrice(item.price)}</span>
                         </div>
                         ${colorTags ? `<div class="color-tags">${colorTags}</div>` : ""}
                     </div>
