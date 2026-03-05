@@ -1922,7 +1922,7 @@ p {
     margin-top: var(--space-xs);
 }
 
-/* Color Picker Styles */
+/* Custom Color Picker */
 .color-picker-row {
     display: flex;
     gap: var(--space-lg);
@@ -1941,58 +1941,114 @@ p {
     margin-bottom: var(--space-xs);
 }
 
-.color-picker-wrapper {
+.custom-color-picker {
+    position: relative;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    background: var(--color-white);
+}
+
+.picker-preview {
+    height: 48px;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-sm);
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-xs);
-    border: 1px solid var(--color-gray-300);
-    border-radius: var(--radius-sm);
-    background-color: var(--color-white);
-    transition: var(--transition-base);
-}
-
-.color-picker-wrapper:focus-within {
-    border-color: var(--color-black);
-}
-
-.color-picker-wrapper input[type="color"] {
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: var(--radius-sm);
-    cursor: pointer;
-    padding: 0;
-    background: none;
-}
-
-.color-picker-wrapper input[type="color"]::-webkit-color-swatch-wrapper {
-    padding: 0;
-}
-
-.color-picker-wrapper input[type="color"]::-webkit-color-swatch {
+    justify-content: center;
     border: 1px solid var(--color-gray-200);
-    border-radius: var(--radius-sm);
+    background-color: #FFFFFF;
+    transition: background-color 0.15s ease;
 }
 
-.color-picker-wrapper input[type="color"]::-moz-color-swatch {
-    border: 1px solid var(--color-gray-200);
-    border-radius: var(--radius-sm);
-}
-
-.color-text-input {
-    flex: 1;
-    border: none;
+.picker-hex {
     font-family: var(--font-body);
-    font-size: 0.875rem;
-    padding: var(--space-xs);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #333;
+    user-select: all;
+}
+
+.picker-sliders {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.picker-slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.picker-slider-group label {
+    font-size: 0.6875rem;
+    color: var(--color-gray-500);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    min-width: 80px;
 }
 
-.color-text-input:focus {
+/* Range slider styling — gradient lives on the TRACK, not the input,
+   so the thumb centre lines up with the correct colour. */
+.picker-hue,
+.picker-lightness {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 22px;           /* match thumb height so it centres */
+    background: transparent; /* gradient goes on track pseudo-element */
+    border-radius: 0;
     outline: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.picker-hue::-webkit-slider-runnable-track,
+.picker-lightness::-webkit-slider-runnable-track {
+    height: 16px;
+    border-radius: 8px;
+    background: var(--track-bg, #ccc);
+}
+
+.picker-hue::-webkit-slider-thumb,
+.picker-lightness::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-700);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    cursor: pointer;
+    margin-top: -3px;       /* (22-16)/2 — centre on 16px track */
+}
+
+.picker-hue::-moz-range-track,
+.picker-lightness::-moz-range-track {
+    height: 16px;
+    border-radius: 8px;
+    background: var(--track-bg, #ccc);
+}
+
+.picker-hue::-moz-range-thumb,
+.picker-lightness::-moz-range-thumb {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--color-white);
+    border: 2px solid var(--color-gray-700);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+.custom-color-picker .color-clear-btn {
+    position: absolute;
+    top: var(--space-xs);
+    right: var(--space-xs);
 }
 
 .color-clear-btn {
@@ -2382,6 +2438,37 @@ p {
 
     .color-picker-group {
         min-width: 100%;
+    }
+
+    .picker-hue,
+    .picker-lightness {
+        height: 28px;          /* match thumb */
+        background: transparent;
+    }
+
+    .picker-hue::-webkit-slider-runnable-track,
+    .picker-lightness::-webkit-slider-runnable-track {
+        height: 20px;
+        border-radius: 10px;
+    }
+
+    .picker-hue::-webkit-slider-thumb,
+    .picker-lightness::-webkit-slider-thumb {
+        width: 28px;
+        height: 28px;
+        margin-top: -4px;      /* (28-20)/2 */
+    }
+
+    .picker-hue::-moz-range-track,
+    .picker-lightness::-moz-range-track {
+        height: 20px;
+        border-radius: 10px;
+    }
+
+    .picker-hue::-moz-range-thumb,
+    .picker-lightness::-moz-range-thumb {
+        width: 28px;
+        height: 28px;
     }
 }
 

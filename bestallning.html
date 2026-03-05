@@ -106,27 +106,49 @@
             <div class="form-group">
               <div class="color-picker-row">
                 <div class="color-picker-group">
-                  <label for="bgColor1" class="color-picker-label"
-                    >Färg 1</label
+                  <label class="color-picker-label">Bakgrundsfärg 1</label>
+                  <div
+                    class="custom-color-picker"
+                    id="picker1"
+                    data-input="bgColor1"
                   >
-                  <div class="color-picker-wrapper">
                     <input
-                      type="color"
+                      type="hidden"
                       id="bgColor1"
                       name="bgColor1"
-                      value="#ffffff"
-                    />
-                    <input
-                      type="text"
-                      id="bgColor1Text"
-                      class="color-text-input"
                       value="#FFFFFF"
-                      placeholder="#FFFFFF"
                     />
+                    <div class="picker-preview" id="picker1Preview">
+                      <span class="picker-hex" id="picker1Hex">#FFFFFF</span>
+                    </div>
+                    <div class="picker-sliders">
+                      <div class="picker-slider-group">
+                        <label>Nyans</label>
+                        <input
+                          type="range"
+                          class="picker-hue"
+                          id="picker1Hue"
+                          min="0"
+                          max="360"
+                          value="0"
+                        />
+                      </div>
+                      <div class="picker-slider-group">
+                        <label>Ljushet</label>
+                        <input
+                          type="range"
+                          class="picker-lightness"
+                          id="picker1Lightness"
+                          min="10"
+                          max="95"
+                          value="70"
+                        />
+                      </div>
+                    </div>
                     <button
                       type="button"
                       class="color-clear-btn"
-                      data-target="bgColor1"
+                      data-picker="picker1"
                       title="Rensa färg"
                     >
                       ×
@@ -134,27 +156,49 @@
                   </div>
                 </div>
                 <div class="color-picker-group">
-                  <label for="bgColor2" class="color-picker-label"
-                    >Färg 2</label
+                  <label class="color-picker-label">Bakgrundsfärg 2</label>
+                  <div
+                    class="custom-color-picker"
+                    id="picker2"
+                    data-input="bgColor2"
                   >
-                  <div class="color-picker-wrapper">
                     <input
-                      type="color"
+                      type="hidden"
                       id="bgColor2"
                       name="bgColor2"
-                      value="#ffffff"
-                    />
-                    <input
-                      type="text"
-                      id="bgColor2Text"
-                      class="color-text-input"
                       value="#FFFFFF"
-                      placeholder="#FFFFFF"
                     />
+                    <div class="picker-preview" id="picker2Preview">
+                      <span class="picker-hex" id="picker2Hex">#FFFFFF</span>
+                    </div>
+                    <div class="picker-sliders">
+                      <div class="picker-slider-group">
+                        <label>Nyans</label>
+                        <input
+                          type="range"
+                          class="picker-hue"
+                          id="picker2Hue"
+                          min="0"
+                          max="360"
+                          value="0"
+                        />
+                      </div>
+                      <div class="picker-slider-group">
+                        <label>Ljushet</label>
+                        <input
+                          type="range"
+                          class="picker-lightness"
+                          id="picker2Lightness"
+                          min="10"
+                          max="95"
+                          value="70"
+                        />
+                      </div>
+                    </div>
                     <button
                       type="button"
                       class="color-clear-btn"
-                      data-target="bgColor2"
+                      data-picker="picker2"
                       title="Rensa färg"
                     >
                       ×
@@ -381,62 +425,140 @@
 
       // Color picker functionality
       function setupColorPickers() {
-        // Sync color picker with text input for both colors
-        ["bgColor1", "bgColor2"].forEach((id) => {
-          const colorInput = document.getElementById(id);
-          const textInput = document.getElementById(id + "Text");
-          const clearBtn = document.querySelector(
-            `.color-clear-btn[data-target="${id}"]`,
+        ["picker1", "picker2"].forEach((pickerId) => {
+          const container = document.getElementById(pickerId);
+          const inputId = container.dataset.input;
+          const hiddenInput = document.getElementById(inputId);
+          const preview = document.getElementById(pickerId + "Preview");
+          const hexLabel = document.getElementById(pickerId + "Hex");
+          const hueSlider = document.getElementById(pickerId + "Hue");
+          const lightnessSlider = document.getElementById(
+            pickerId + "Lightness",
           );
+          const clearBtn = container.querySelector(".color-clear-btn");
 
-          if (colorInput && textInput) {
-            // On first click, nudge to a saturated color so mobile Chrome's
-            // HSB picker opens with a colorful spectrum instead of grayscale
-            let pickerOpened = false;
-            colorInput.addEventListener("click", () => {
-              if (!pickerOpened && colorInput.value === "#ffffff") {
-                colorInput.value = "#e06060";
-              }
-              pickerOpened = true;
-            });
+          let currentHue = 0;
+          let currentSat = 70;
+          let currentLight = 70;
 
-            // Sync color to text
-            colorInput.addEventListener("input", () => {
-              textInput.value = colorInput.value.toUpperCase();
-            });
-
-            // Sync text to color
-            textInput.addEventListener("input", () => {
-              const value = textInput.value;
-              if (/^#[0-9A-Fa-f]{6}$/.test(value)) {
-                colorInput.value = value;
-              }
-            });
-
-            textInput.addEventListener("blur", () => {
-              // Validate and fix format on blur
-              let value = textInput.value.trim();
-              if (!value.startsWith("#")) {
-                value = "#" + value;
-              }
-              if (/^#[0-9A-Fa-f]{6}$/.test(value)) {
-                textInput.value = value.toUpperCase();
-                colorInput.value = value;
-              } else {
-                textInput.value = colorInput.value.toUpperCase();
-              }
-            });
+          function setColor(hex) {
+            hiddenInput.value = hex;
+            preview.style.backgroundColor = hex;
+            hexLabel.textContent = hex;
+            // Adjust text color for contrast
+            const rgb = hexToRgb(hex);
+            const lum = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
+            hexLabel.style.color = lum > 0.6 ? "#333" : "#fff";
           }
 
-          // Clear button
-          if (clearBtn) {
-            clearBtn.addEventListener("click", () => {
-              const defaultColor = "#FFFFFF";
-              colorInput.value = defaultColor;
-              textInput.value = defaultColor;
-              pickerOpened = false;
-            });
+          function hslToHex(h, s, l) {
+            h = ((h % 360) + 360) % 360;
+            s = Math.max(0, Math.min(100, s)) / 100;
+            l = Math.max(0, Math.min(100, l)) / 100;
+            const c = (1 - Math.abs(2 * l - 1)) * s;
+            const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+            const m = l - c / 2;
+            let r = 0,
+              g = 0,
+              b = 0;
+            if (h < 60) {
+              r = c;
+              g = x;
+              b = 0;
+            } else if (h < 120) {
+              r = x;
+              g = c;
+              b = 0;
+            } else if (h < 180) {
+              r = 0;
+              g = c;
+              b = x;
+            } else if (h < 240) {
+              r = 0;
+              g = x;
+              b = c;
+            } else if (h < 300) {
+              r = x;
+              g = 0;
+              b = c;
+            } else {
+              r = c;
+              g = 0;
+              b = x;
+            }
+            const toHex = (v) =>
+              Math.round((v + m) * 255)
+                .toString(16)
+                .padStart(2, "0");
+            return `#${toHex(r)}${toHex(g)}${toHex(b)}`.toUpperCase();
           }
+
+          function hexToRgb(hex) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            return { r, g, b };
+          }
+
+          function updateFromSliders() {
+            const hex = hslToHex(currentHue, currentSat, currentLight);
+            setColor(hex);
+          }
+
+          // Update hue slider track gradient
+          function updateHueTrack() {
+            const stops = [];
+            for (let h = 0; h <= 360; h += 30) {
+              stops.push(
+                `${hslToHex(h, currentSat, currentLight)} ${(h / 360) * 100}%`,
+              );
+            }
+            hueSlider.style.setProperty(
+              "--track-bg",
+              `linear-gradient(to right, ${stops.join(", ")})`,
+            );
+          }
+
+          // Update lightness slider track gradient
+          function updateLightnessTrack() {
+            const dark = hslToHex(currentHue, currentSat, 10);
+            const mid = hslToHex(currentHue, currentSat, 50);
+            const light = hslToHex(currentHue, currentSat, 95);
+            lightnessSlider.style.setProperty(
+              "--track-bg",
+              `linear-gradient(to right, ${dark}, ${mid}, ${light})`,
+            );
+          }
+
+          hueSlider.addEventListener("input", () => {
+            currentHue = parseInt(hueSlider.value);
+            updateHueTrack();
+            updateLightnessTrack();
+            updateFromSliders();
+          });
+
+          lightnessSlider.addEventListener("input", () => {
+            currentLight = parseInt(lightnessSlider.value);
+            updateHueTrack();
+            updateLightnessTrack();
+            updateFromSliders();
+          });
+
+          // Clear
+          clearBtn.addEventListener("click", () => {
+            setColor("#FFFFFF");
+            hueSlider.value = 0;
+            lightnessSlider.value = 70;
+            currentHue = 0;
+            currentLight = 70;
+            updateHueTrack();
+            updateLightnessTrack();
+          });
+
+          // Init
+          updateHueTrack();
+          updateLightnessTrack();
+          setColor("#FFFFFF");
         });
       }
 
