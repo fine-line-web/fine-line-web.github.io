@@ -1,12 +1,16 @@
 {
-  "lastUpdated": "2026-03-05T14:49:44.175Z",
+  "lastUpdated": "2026-03-05T15:04:51.224Z",
   "items": [
     {
       "id": "hund",
       "name": "Hund",
       "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade hund.",
       "category": "hund",
-      "price": 250,
+      "price": [
+        250,
+        450,
+        650
+      ],
       "size": "A5 (15x21cm), A4 (21x30cm), A3 (30x40cm)",
       "type": "one-line akvarell",
       "colors": [],
@@ -385,7 +389,11 @@
       "name": "Katt",
       "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade katt.",
       "category": "katt",
-      "price": 250,
+      "price": [
+        250,
+        450,
+        650
+      ],
       "size": "A5 (15x21cm), A4 (21x30cm), A3 (30x40cm)",
       "type": "one-line akvarell",
       "colors": [],
@@ -453,7 +461,10 @@
       "name": "Häst",
       "description": "Välj typ, storlek och två färger så skapar jag en personlig tavla.",
       "category": "",
-      "price": 550,
+      "price": [
+        550,
+        750
+      ],
       "size": "A4 (21x30cm), A3 (30x40cm)",
       "type": "one-line akvarell",
       "colors": [],
@@ -480,7 +491,11 @@
       "name": "Smådjur",
       "description": "Välj typ, storlek och två färger så skapar jag en personlig tavla på ditt älskade husdjur.",
       "category": "",
-      "price": 250,
+      "price": [
+        250,
+        450,
+        650
+      ],
       "size": "A5 (15x21cm), A4 (21x30cm), A3 (30x40cm)",
       "type": "one-line akvarell",
       "colors": [],
