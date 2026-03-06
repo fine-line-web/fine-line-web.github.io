@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-05T23:46:39.274Z",
+  "lastUpdated": "2026-03-06T01:44:08.107Z",
   "items": [
     {
       "id": "hund",
@@ -484,7 +484,7 @@
       ],
       "available": true,
       "featured": true,
-      "dateAdded": "2026-03-05"
+      "dateAdded": "2026-03-06"
     },
     {
       "id": "Smådjur",
@@ -510,7 +510,7 @@
       ],
       "available": true,
       "featured": true,
-      "dateAdded": "2026-03-05"
+      "dateAdded": "2026-03-06"
     }
   ]
 }
