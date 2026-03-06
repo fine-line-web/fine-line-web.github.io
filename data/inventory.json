@@ -1,11 +1,11 @@
 {
-  "lastUpdated": "2026-03-06T10:29:14.633Z",
+  "lastUpdated": "2026-03-06T11:23:55.752Z",
   "items": [
     {
       "id": "hund",
       "name": "Hund",
       "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade hund.",
-      "category": "hund",
+      "category": "Hund",
       "price": [
         300,
         500,
@@ -69,6 +69,7 @@
         "Berner sennenhund",
         "Bichon frisé",
         "Bichon havanais",
+        "Bichon havanais (klippt)",
         "Biewer terrier",
         "Black and tan coonhound",
         "Blodhund",
@@ -120,6 +121,7 @@
         "Collie (långhårig)",
         "Continental bulldog",
         "Coton de tuléar",
+        "Coton de tuléar (klippt)",
         "Curly coated retriever",
         "Dalmatiner",
         "Dandie dinmont terrier",
@@ -229,6 +231,7 @@
         "Löwchen",
         "Magyar agar",
         "Malteser",
+        "Malteser (klippt)",
         "Manchesterterrier",
         "Maremmano abruzzese",
         "Markiesje",
@@ -286,6 +289,10 @@
         "Pudel (mellan)",
         "Pudel (stor)",
         "Pudel (toy)",
+        "Pudel (dvärg) (Utställningsklippt)",
+        "Pudel (mellan) (Utställningsklippt)",
+        "Pudel (stor) (Utställningsklippt)",
+        "Pudel (toy) (Utställningsklippt)",
         "Pudelpointer",
         "Puli",
         "Pumi",
@@ -318,6 +325,7 @@
         "Shetland sheepdog",
         "Shiba",
         "Shih tzu",
+        "Shih tzu (klippt)",
         "Shikoku",
         "Siberian husky",
         "Silky terrier",
@@ -377,18 +385,19 @@
         "Working kelpie",
         "Xoloitzcuintle",
         "Yorkshireterrier",
+        "Yorkshireterrier (klippt)",
         "Österreichischer pinscher",
         "Östsibirisk lajka"
       ],
       "available": true,
       "featured": true,
-      "dateAdded": "2026-01-30"
+      "dateAdded": "2026-03-06"
     },
     {
       "id": "katt",
       "name": "Katt",
       "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade katt.",
-      "category": "katt",
+      "category": "Katt",
       "price": [
         300,
         500,
@@ -454,13 +463,13 @@
       ],
       "available": true,
       "featured": true,
-      "dateAdded": "2026-01-30"
+      "dateAdded": "2026-03-06"
     },
     {
       "id": "häst",
       "name": "Häst",
       "description": "Välj typ, storlek och två färger så skapar jag en personlig tavla.",
-      "category": "",
+      "category": "Övrigt",
       "price": [
         550,
         750
@@ -490,7 +499,7 @@
       "id": "Smådjur",
       "name": "Smådjur",
       "description": "Välj typ, storlek och två färger så skapar jag en personlig tavla på ditt älskade husdjur.",
-      "category": "",
+      "category": "Övrigt",
       "price": [
         300,
         500,
@@ -506,7 +515,8 @@
       "variants": [
         "Kanin",
         "Vädurskanin",
-        "Råtta"
+        "Råtta",
+        "Övrigt (specifiera i beställningen)"
       ],
       "available": true,
       "featured": true,
