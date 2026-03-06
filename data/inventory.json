@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-06T09:32:56.398Z",
+  "lastUpdated": "2026-03-06T10:29:14.633Z",
   "items": [
     {
       "id": "hund",
@@ -7,9 +7,9 @@
       "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade hund.",
       "category": "hund",
       "price": [
-        250,
-        450,
-        650
+        300,
+        500,
+        700
       ],
       "size": "13x18cm, 21x30cm, 30x40cm",
       "type": "one-line akvarell",
@@ -390,9 +390,9 @@
       "description": "Välj ras, storlek och två färger så skapar jag en personlig tavla på din älskade katt.",
       "category": "katt",
       "price": [
-        250,
-        450,
-        650
+        300,
+        500,
+        700
       ],
       "size": "13x18cm, 21x30cm, 30x40cm",
       "type": "one-line akvarell",
@@ -492,9 +492,9 @@
       "description": "Välj typ, storlek och två färger så skapar jag en personlig tavla på ditt älskade husdjur.",
       "category": "",
       "price": [
-        250,
-        450,
-        650
+        300,
+        500,
+        700
       ],
       "size": "13x18cm, 21x30cm, 30x40cm",
       "type": "one-line akvarell",
