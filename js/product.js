@@ -152,6 +152,9 @@ class ProductPage {
 
     // Render size dropdown
     this.renderSizeDropdown();
+
+    // GA4: product detail view
+    gaViewItem(this.product);
   }
 
   /**
@@ -477,6 +480,9 @@ class ProductPage {
         sizeSelect?.focus();
         return;
       }
+
+      // GA4: order button clicked
+      gaInitiateOrder(this.product, this.selectedVariant, this.selectedSize);
 
       // Navigate to order page with prefilled data
       const params = new URLSearchParams({

@@ -25,6 +25,7 @@ class GalleryManager {
     await this.loadItems();
     this.buildCategoryFilters();
     this.setupEventListeners();
+    this.setupClickTracking();
     this.checkUrlParams();
     this.render();
   }
@@ -97,6 +98,21 @@ class GalleryManager {
     }
   }
 
+  setupClickTracking() {
+    if (!this.grid) return;
+    // Event delegation: fire select_item when any artwork card is clicked
+    this.grid.addEventListener("click", (e) => {
+      const card = e.target.closest("[data-item-id]");
+      if (!card) return;
+      gaSelectItem({
+        id: card.dataset.itemId,
+        name: card.dataset.itemName,
+        category: card.dataset.itemCategory,
+        price: parseFloat(card.dataset.itemPrice) || 0,
+      });
+    });
+  }
+
   checkUrlParams() {
     const urlParams = new URLSearchParams(window.location.search);
     const category = urlParams.get("kategori");
@@ -108,6 +124,9 @@ class GalleryManager {
   setCategory(category, updateUrl = true) {
     this.currentCategory = category;
     this.currentPage = 1;
+
+    // GA4: track user-initiated filter clicks (not URL param pre-selection)
+    if (updateUrl) gaGalleryFilter(category);
 
     // Update active button
     if (this.categoryFilters) {
@@ -218,9 +237,16 @@ class GalleryManager {
         .join("") || "";
 
     const availabilityClass = item.available === false ? "sold" : "";
+    const itemPrice = Array.isArray(item.price)
+      ? item.price[0]
+      : item.price || 0;
 
     return `
-            <article class="artwork-card ${availabilityClass}">
+            <article class="artwork-card ${availabilityClass}"
+                     data-item-id="${item.id}"
+                     data-item-name="${item.name}"
+                     data-item-category="${item.category || ""}"
+                     data-item-price="${itemPrice}">
                 <a href="produkt.html?id=${item.id}">
                     <div class="artwork-image">
                         <img src="${getImageUrl(item.image)}" 

@@ -324,6 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Simulate API call (replace with actual implementation)
       setTimeout(() => {
         button.textContent = "Tack!";
+        gaNewsletterSignup();
         newsletterForm.querySelector("input").value = "";
 
         setTimeout(() => {

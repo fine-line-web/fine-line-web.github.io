@@ -17,6 +17,20 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <!-- Google Analytics 4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TY8NYT248M"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-TY8NYT248M");
+    </script>
+    <script src="js/analytics.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -679,6 +693,15 @@
                 "Content-Type": "application/json",
               },
               mode: "no-cors", // Slack webhooks don't support CORS
+            });
+
+            // GA4: order submitted (conversion)
+            gaPurchase({
+              transaction_id: `order_${produktId || Date.now()}`,
+              value: 0,
+              items: [
+                { item_id: produktId || "", item_name: formData.produkt },
+              ],
             });
 
             // Redirect to thank you page with context

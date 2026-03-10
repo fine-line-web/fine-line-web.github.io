@@ -17,6 +17,20 @@
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <!-- Google Analytics 4 -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-TY8NYT248M"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-TY8NYT248M");
+    </script>
+    <script src="js/analytics.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -139,6 +153,11 @@
         if (!produkt && !email) {
           window.location.href = "galleri.html";
           return;
+        }
+
+        // GA4: order confirmed (backup event if user refreshes tack.html)
+        if (produkt) {
+          gaGenerateLead("order_confirmed");
         }
 
         // Personalize the message
